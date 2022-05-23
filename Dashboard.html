@@ -2,29 +2,35 @@
 <html lang="en" dir="ltr">
 <head>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <script src="ukraine.js"></script>
   <script src="corona.js"></script>
+  <script src="alleKrisen.js"></script>
+  <script src="libanon.js"></script>
+  <script src="afghanistan.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
 
   <meta charset="utf-8">
   <title>Dashboard</title>
 </head>
 <body>
 
-  <label for="artikelLabel">Artikel auswaehlen:</label>
+  <label for="artikelLabel">Krise auswaehlen:</label>
 
   <select name="artikelAuswahl" id="artikelAuswahl">
-    <option value="wahl" selected="selected">Bitte Wikipedia-Artikel auswaehlen.</option>
+    <option value="verschiedene" selected="selected">Verschiedene</option>
     <option value="ukraine">Ukraine</option>
     <option value="coronaVirus">Coronavirus</option>
     <option value="afghanistan">Afghanistan</option>
     <option value="libanon">Libanon</option>
   </select>
 
-  <div class="" style="display: flex; justify-content: space-between;">
-    <div style="width: 50%">
+  <div id="wrapperCanvas">
+    <div class="divCanvas">
       <canvas id="diagrammBox" width="400" height="300"></canvas>
     </div>
-    <div style="width: 50%">
+    <div class="divCanvas">
       <canvas id="diagrammBox2" width="400" height="300"></canvas>
     </div>
   </div>

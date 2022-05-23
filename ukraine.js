@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', function () {
+
   const comboBoxArtikel = document.getElementById('artikelAuswahl').addEventListener('change', function() {
     console.log('You selected: ', this.value);
     if (this.value == "ukraine") {
@@ -12,17 +13,19 @@ window.addEventListener('DOMContentLoaded', function () {
     if(window.diagramm != null){
       window.diagramm.destroy();
     }
+
     const diagrammBox = document.getElementById('diagrammBox').getContext('2d');
     window.diagramm = new Chart(diagrammBox, {
+
       type: 'line',
-      data: {
+          data: {
         datasets: [{
           label: 'Englisch',
           data: dataEnglisch,
           borderWidth: 1,
           borderColor: 'orange',
           backgroundColor: 'orange',
-          borderWidth: 3
+          borderWidth: 3,
         }
       ]
     },
@@ -57,6 +60,11 @@ window.addEventListener('DOMContentLoaded', function () {
   if(window.diagramm2 != null){
     window.diagramm2.destroy();
   }
+    const zweitesCanvas = document.getElementById('diagrammBox2');
+    if(zweitesCanvas.style.display === 'none'){
+      zweitesCanvas.style.display = 'block';
+    }
+
   const diagrammBox2 = document.getElementById('diagrammBox2').getContext('2d');
   window.diagramm2 = new Chart(diagrammBox2, {
     type: 'line',
@@ -69,7 +77,7 @@ window.addEventListener('DOMContentLoaded', function () {
         borderColor: 'orange',
         backgroundColor: 'orange',
         borderWidth: 3
-      },{
+        },{
         label: 'Deutsch',
         data: [61000, 150000, 309000, 151000, 653000, 403000, 256000, 265000, 222000, 190000 ],
         borderWidth: 1,
