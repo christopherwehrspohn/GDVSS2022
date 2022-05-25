@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="../JavaScript/ukraine.js"></script>
+    <script src="../JavaScript/corona.js"></script>
+    <script src="../JavaScript/alleKrisen.js"></script>
+    <script src="../JavaScript/libanon.js"></script>
+    <script src="../JavaScript/afghanistan.js"></script>
+
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="navi">
+    <ul class="nav-list">
+      <li>
+        <a id="linkAlleKrisen"href="#">
+          <img id="imgAlleKrisen" src="./png/alleKrisen.png" alt="">
+        </a>
+         <span class="tooltip">Alle Krisen</span>
+      </li>
+      <li>
+       <a id="linkUkraine" href="#">
+         <img src="./png/ukraine.png" alt="">
+       </a>
+       <span class="tooltip">Ukraine</span>
+     </li>
+     <li>
+       <a id="linkCorona" href="#">
+         <img src="./png/coronavirus.png" alt="">
+       </a>
+       <span class="tooltip">Coronavirus</span>
+     </li>
+     <li>
+       <a id="linkAfghanistan" href="#">
+         <img src="./png/afghanistan.png" alt="">
+       </a>
+       <span class="tooltip">Afghanistan</span>
+     </li>
+     <li>
+       <a id="linkLibanon" href="#">
+         <img src="./png/explosion.png" alt="">
+       </a>
+       <span class="tooltip">Libanon</span>
+     </li>
+    </ul>
+  </div>
+  <section class="dashboard">
+      <div class="text">Wie schnell nimmt die Aufmerksamkeit für eine Krise wieder ab?</div>
+      <div id="wrapperCanvas">
+        <div class="divCanvas">
+          <canvas id="diagrammBox" width="400" height="300"></canvas>
+        </div>
+        <div class="divCanvas">
+          <canvas id="diagrammBox2" width="400" height="300"></canvas>
+        </div>
+      </div>
+  </section>
+
+</body>
+</html>

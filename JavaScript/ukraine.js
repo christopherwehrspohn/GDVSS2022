@@ -1,10 +1,7 @@
 window.addEventListener('DOMContentLoaded', function () {
 
-  const comboBoxArtikel = document.getElementById('artikelAuswahl').addEventListener('change', function() {
-    console.log('You selected: ', this.value);
-    if (this.value == "ukraine") {
+  const comboBoxArtikel = document.getElementById('linkUkraine').addEventListener('click', function() {
       erstelleUkraineDiagramme();
-  };
 });
 });
   function erstelleUkraineDiagramme(){

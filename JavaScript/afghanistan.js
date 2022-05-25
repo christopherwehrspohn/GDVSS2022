@@ -1,10 +1,7 @@
 window.addEventListener('DOMContentLoaded', function () {
 
-  const comboBoxArtikel = document.getElementById('artikelAuswahl').addEventListener('change', function() {
-    console.log('You selected: ', this.value);
-    if (this.value == "afghanistan") {
+  const comboBoxArtikel = document.getElementById('linkAfghanistan').addEventListener('click', function() {
       erstelleAfghanistanDiagramme();
-    }
   });
 
   function erstelleAfghanistanDiagramme(){
@@ -31,7 +28,7 @@ window.addEventListener('DOMContentLoaded', function () {
       plugins: {
         title: {
           display: true,
-          text: 'Aufrufzahlen des englischen Wikipedia Artikels "Coronavirus"'
+          text: 'Aufrufzahlen des englischen Wikipedia Artikels "Afghanistan"'
         },
         legend: {
           position: 'bottom',
