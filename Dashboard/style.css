@@ -6,20 +6,14 @@
   box-sizing: border-box;
   font-family: "Poppins" , sans-serif;
 }
+
 canvas {
-      background: #11101D;
-      border-radius: 15px;
-      box-shadow: 0px 2px 15px rgba(25, 25, 25, 0.27);
-      margin:  50px 0;
-    }
-#wrapperCanvas{
-  display: flex;
-  justify-content:
-  space-around;
+  background: #11101D;
+  border-radius: 15px;
+  box-shadow: 0px 2px 15px rgba(25, 25, 25, 0.27);
+  margin-left: 50px;
 }
-.divCanvas{
-  width: 48%
-}
+
 .navi{
   position: fixed;
   left: 0;
@@ -31,14 +25,21 @@ canvas {
   z-index: 99;
   transition: all 0.5s ease;
 }
-
+.highlights{
+  background: #fff;
+}
+.highlights img{
+  filter: none !important;
+}
 .navi img{
   filter: brightness(0) invert(1);
 }
 .navi a:hover img{
   filter: none;
 }
+
 .navi .nav-list{
+  padding-left: 0px !important;
   margin-top: 20px;
   height: 100%;
 }
@@ -109,4 +110,7 @@ canvas {
   font-size: 25px;
   font-weight: 500;
   margin: 18px
+}
+.navi li a:active{
+  background: #FFF;
 }

@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../JavaScript/jquery-3.6.0.min.js"></script>
 
     <script src="../JavaScript/ukraine.js"></script>
     <script src="../JavaScript/corona.js"></script>
-    <script src="../JavaScript/alleKrisen.js"></script>
+    <script src="../JavaScript/vergleich.js"></script>
     <script src="../JavaScript/libanon.js"></script>
     <script src="../JavaScript/afghanistan.js"></script>
 
@@ -19,16 +20,16 @@
   <div class="navi">
     <ul class="nav-list">
       <li>
-        <a id="linkAlleKrisen"href="#">
-          <img id="imgAlleKrisen" src="./png/alleKrisen.png" alt="">
+        <a id="linkvergleich" href="#">
+          <img src="./png/vergleich.png" alt="">
         </a>
-         <span class="tooltip">Alle Krisen</span>
+         <span class="tooltip">Vergleich</span>
       </li>
       <li>
-       <a id="linkUkraine" href="#">
+       <a id="linkUkraine"  href="#">
          <img src="./png/ukraine.png" alt="">
        </a>
-       <span class="tooltip">Ukraine</span>
+       <span class="tooltip">Ukrainekrieg</span>
      </li>
      <li>
        <a id="linkCorona" href="#">
@@ -40,24 +41,36 @@
        <a id="linkAfghanistan" href="#">
          <img src="./png/afghanistan.png" alt="">
        </a>
-       <span class="tooltip">Afghanistan</span>
+       <span class="tooltip">Eroberung Afghanistans durch die Taliban</span>
      </li>
      <li>
        <a id="linkLibanon" href="#">
          <img src="./png/explosion.png" alt="">
        </a>
-       <span class="tooltip">Libanon</span>
+       <span class="tooltip">Explosion im Libanon</span>
+     </li>
+     <li>
+       <a id="linkAhrtal" href="#">
+         <img src="./png/ahrtal.png" alt="">
+       </a>
+       <span class="tooltip">Flutkatastrophe im Ahrtal</span>
+     </li>
+     <li>
+       <a id="linkUiguren" href="#">
+         <img src="./png/uiguren.png" alt="">
+       </a>
+       <span class="tooltip">Verfolgung der Uiguren</span>
      </li>
     </ul>
   </div>
   <section class="dashboard">
       <div class="text">Wie schnell nimmt die Aufmerksamkeit für eine Krise wieder ab?</div>
       <div id="wrapperCanvas">
-        <div class="divCanvas">
-          <canvas id="diagrammBox" width="400" height="300"></canvas>
+        <div class="divCanvas" style="position: relative; width:1000px;">
+          <canvas id="diagrammBox"></canvas>
         </div>
         <div class="divCanvas">
-          <canvas id="diagrammBox2" width="400" height="300"></canvas>
+          <canvas id="diagrammBox2"></canvas>
         </div>
       </div>
   </section>
