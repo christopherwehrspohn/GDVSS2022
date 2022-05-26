@@ -13,14 +13,12 @@ window.addEventListener('DOMContentLoaded', function () {
     dataEnglisch[i].x = "" + i + "";
     }
 
-    console.log("%j", dataEnglisch);
-
-    if(window.diagramm != null){
-      window.diagramm.destroy();
+    if(window.diagramm2 != null){
+      window.diagramm2.destroy();
     }
 
-    const diagrammBox = document.getElementById('diagrammBox').getContext('2d');
-    window.diagramm = new Chart(diagrammBox, {
+    const diagrammBox2 = document.getElementById('diagrammBox2').getContext('2d');
+    window.diagramm2 = new Chart(diagrammBox2, {
       type: 'line',
       data: {
         datasets: [{
@@ -34,6 +32,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ]
     },
     options: {
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,
@@ -59,8 +58,8 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     }
   });
-  if(window.diagramm2 != null){
-    window.diagramm2.destroy();
+  if(window.diagramm3 != null){
+    window.diagramm3.destroy();
   }
 };
 });

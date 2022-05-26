@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function () {
-  console.log($("a"));
 
+  $("#linkvergleich").addClass("highlights");
   $(document).ready(function () {
     $("a").click(function () {
       $("a").removeClass("highlights");
@@ -113,6 +113,10 @@ window.diagramm = new Chart(diagrammBox, {
   ]
 },
 options: {
+  layout: {
+    padding: 10
+},
+  maintainAspectRatio: false,
   plugins: {
     title: {
       display: true,
@@ -128,8 +132,6 @@ options: {
         display: true,
         text: "Aufrufe"
       },
-      ticks: {
-      },
     },
     x: {
       title: {
@@ -139,14 +141,17 @@ options: {
 
     }
   },
+  
 }
 });
-if(window.diagramm2 != null){
-  window.diagramm2.destroy();
+if(window.diagramm3 != null){
+  window.diagramm3.destroy();
 }
 };
 
 function versteckeZweitesCanvas(){
   const zweitesCanvas = document.getElementById('diagrammBox2');
   zweitesCanvas.style.display = 'none';
+  const drittesCanvas = document.getElementById('diagrammBox3');
+  drittesCanvas.style.display = 'none';
 };

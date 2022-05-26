@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
 
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-v4-grid-only@1.0.0/dist/bootstrap-grid.css"
+    />
+    <link rel="stylesheet" href="style.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../JavaScript/jquery-3.6.0.min.js"></script>
@@ -14,66 +18,78 @@
     <script src="../JavaScript/libanon.js"></script>
     <script src="../JavaScript/afghanistan.js"></script>
 
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-<body>
-  <div class="navi">
-    <ul class="nav-list">
-      <li>
-        <a id="linkvergleich" href="#">
-          <img src="./png/vergleich.png" alt="">
-        </a>
-         <span class="tooltip">Vergleich</span>
-      </li>
-      <li>
-       <a id="linkUkraine"  href="#">
-         <img src="./png/ukraine.png" alt="">
-       </a>
-       <span class="tooltip">Ukrainekrieg</span>
-     </li>
-     <li>
-       <a id="linkCorona" href="#">
-         <img src="./png/coronavirus.png" alt="">
-       </a>
-       <span class="tooltip">Coronavirus</span>
-     </li>
-     <li>
-       <a id="linkAfghanistan" href="#">
-         <img src="./png/afghanistan.png" alt="">
-       </a>
-       <span class="tooltip">Eroberung Afghanistans durch die Taliban</span>
-     </li>
-     <li>
-       <a id="linkLibanon" href="#">
-         <img src="./png/explosion.png" alt="">
-       </a>
-       <span class="tooltip">Explosion im Libanon</span>
-     </li>
-     <li>
-       <a id="linkAhrtal" href="#">
-         <img src="./png/ahrtal.png" alt="">
-       </a>
-       <span class="tooltip">Flutkatastrophe im Ahrtal</span>
-     </li>
-     <li>
-       <a id="linkUiguren" href="#">
-         <img src="./png/uiguren.png" alt="">
-       </a>
-       <span class="tooltip">Verfolgung der Uiguren</span>
-     </li>
-    </ul>
-  </div>
-  <section class="dashboard">
-      <div class="text">Wie schnell nimmt die Aufmerksamkeit für eine Krise wieder ab?</div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="navi">
+      <ul class="nav-list">
+        <li>
+          <a id="linkvergleich" href="#">
+            <img src="./png/vergleich.png" alt="" />
+          </a>
+          <span class="tooltip">Vergleich</span>
+        </li>
+        <li>
+          <a id="linkUkraine" href="#">
+            <img src="./png/ukraine.png" alt="" />
+          </a>
+          <span class="tooltip">Ukrainekrieg</span>
+        </li>
+        <li>
+          <a id="linkCorona" href="#">
+            <img src="./png/coronavirus.png" alt="" />
+          </a>
+          <span class="tooltip">Coronavirus</span>
+        </li>
+        <li>
+          <a id="linkAfghanistan" href="#">
+            <img src="./png/afghanistan.png" alt="" />
+          </a>
+          <span class="tooltip">Eroberung Afghanistans durch die Taliban</span>
+        </li>
+        <li>
+          <a id="linkLibanon" href="#">
+            <img src="./png/explosion.png" alt="" />
+          </a>
+          <span class="tooltip">Explosion im Libanon</span>
+        </li>
+        <li>
+          <a id="linkAhrtal" href="#">
+            <img src="./png/ahrtal.png" alt="" />
+          </a>
+          <span class="tooltip">Flutkatastrophe im Ahrtal</span>
+        </li>
+        <li>
+          <a id="linkUiguren" href="#">
+            <img src="./png/uiguren.png" alt="" />
+          </a>
+          <span class="tooltip">Verfolgung der Uiguren</span>
+        </li>
+      </ul>
+    </div>
+    <section class="dashboard">
+      <div class="text">
+        Wie schnell nimmt die Aufmerksamkeit für eine Krise wieder ab?
+      </div>
       <div id="wrapperCanvas">
-        <div class="divCanvas" style="position: relative; width:1000px;">
-          <canvas id="diagrammBox"></canvas>
-        </div>
-        <div class="divCanvas">
-          <canvas id="diagrammBox2"></canvas>
+        <div class="row">
+          <div class="col-12">
+            <div id="diagrammOben">
+              <canvas id="diagrammBox"></canvas>
+            </div>
+          </div>
+          <div class="col-6">
+            <div id="diagrammLinks">
+              <canvas id="diagrammBox2"></canvas>
+            </div>
+          </div>
+          <div class="col-6">
+            <div id="diagrammRechts">
+              <canvas id="diagrammBox3"></canvas>
+            </div>
+          </div>
         </div>
       </div>
-  </section>
-
-</body>
+    </section>
+  </body>
 </html>
