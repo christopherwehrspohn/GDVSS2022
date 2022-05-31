@@ -56,14 +56,14 @@ function erstelleUkraineDiagramme() {
     { x: "20220330", y: 59867 },
   ];
   var i;
-  for(i = 0; i < dataEnglisch.length; i++){
-      dataEnglisch[i].x = "" + i + "";
+  for (i = 0; i < dataEnglisch.length; i++) {
+    dataEnglisch[i].x = "" + i + "";
   }
 
   if (window.diagramm2 != null) {
     window.diagramm2.destroy();
   }
-
+  $(".col-6").removeClass("col-12");
   const diagrammBox2 = document.getElementById("diagrammBox2").getContext("2d");
   window.diagramm2 = new Chart(diagrammBox2, {
     type: "line",
@@ -81,16 +81,16 @@ function erstelleUkraineDiagramme() {
     },
     options: {
       layout: {
-        padding: 10
-    },
-    maintainAspectRatio: false,
+        padding: 10,
+      },
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,
-          text: 'Artikel zur  Ukraine-Krise',
+          text: "Artikel zur  Ukraine-Krise",
         },
         legend: {
-          position: 'right',
+          position: "right",
         },
       },
       scales: {
@@ -162,17 +162,17 @@ function erstelleUkraineDiagramme() {
     },
     options: {
       layout: {
-        padding: 10
-    },
-    maintainAspectRatio: false,
+        padding: 10,
+      },
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,
           text: 'Aufrufzahlen des Wikipedia Artikels "Ukraine" in verschiedenen Sprachen',
         },
         legend: {
-          position: 'right',
-          },
+          position: "right",
+        },
       },
       scales: {
         y: {
