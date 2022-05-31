@@ -70,7 +70,7 @@ function erstelleUkraineDiagramme() {
     data: {
       datasets: [
         {
-          label: "Englisch",
+          label: "Ukraine",
           data: dataEnglisch,
           borderWidth: 1,
           borderColor: "orange",
@@ -87,7 +87,7 @@ function erstelleUkraineDiagramme() {
       plugins: {
         title: {
           display: true,
-          text: 'Aufrufzahlen des englischen Wikipedia Artikels "Ukraine"',
+          text: 'Artikel zur  Ukraine-Krise',
         },
         legend: {
           position: 'right',
