@@ -18,13 +18,12 @@
 }
 #diagrammLinks{
   width: 100%;
-  height: 48vh;
+  height: 40vh;
 }
 #diagrammRechts{
   width: 100%;
-  height: 48vh;
+  height: 40vh;
 }
-
 body{
   overflow: hidden;
   height: 100vh;
@@ -37,7 +36,6 @@ canvas {
   margin-left: 25px;
   margin-top: 25px;
 }
-
 .navi{
   position: fixed;
   left: 0;
@@ -137,4 +135,14 @@ canvas {
 }
 .navi li a:active{
   background: #FFF;
+}
+#auswahlNormalisierung{
+  border-radius: 5px;
+  background: #11101D;
+  color: #FFF;
+
+  padding: 5px;
+  width: 30%;
+  margin-left: 25px;
+  margin-top: 25px;
 }

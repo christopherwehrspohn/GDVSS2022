@@ -11,6 +11,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../JavaScript/jquery-3.6.0.min.js"></script>
+    <script src="../JavaScript/math.js" type="text/javascript"></script>
 
     <script src="../JavaScript/ukraine.js"></script>
     <script src="../JavaScript/corona.js"></script>
@@ -76,6 +77,16 @@
           <div class="col-12">
             <div id="diagrammOben">
               <canvas id="diagrammBox"></canvas>
+            </div>
+          </div>
+          <div class="col-12">
+            <div id="auswahlWrapper">
+              <select name="auswahl" id="auswahlNormalisierung">
+                <option value="prozent" selected>Hoechster Punkt (Prozent)</option>
+                <option value="median">Median</option>
+                <option value="25erQuantil">25erQuantil</option>
+                <option value="aufErstenTag">erster Tag (Grundlast)</option>
+              </select>
             </div>
           </div>
           <div class="col-6">

@@ -6,6 +6,10 @@ window.addEventListener("DOMContentLoaded", function () {
     });
 });
 function erstelleUkraineDiagramme() {
+  $("#auswahlNormalisierung"). css("display", "none");
+  $("#diagrammBox2"). css("margin-top", "25px");
+  $("#diagrammBox3"). css("margin-top", "25px");
+
   if (window.diagramm3 != null) {
     window.diagramm3.destroy();
   }
@@ -121,44 +125,23 @@ function erstelleUkraineDiagramme() {
 
   const diagrammBox3 = document.getElementById("diagrammBox3").getContext("2d");
   window.diagramm3 = new Chart(diagrammBox3, {
-    type: "bar",
-    data: {
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      datasets: [
-        {
-          label: "Englisch",
-          data: [
-            156699, 296182, 619563, 401084, 2394887, 1699000, 1242560, 741812,
-            660741, 554038,
-          ],
-          borderWidth: 1,
-          borderColor: "orange",
-          backgroundColor: "orange",
-          borderWidth: 3,
-        },
-        {
-          label: "Deutsch",
-          data: [
-            61000, 150000, 309000, 151000, 653000, 403000, 256000, 265000,
-            222000, 190000,
-          ],
-          borderWidth: 1,
-          backgroundColor: "green",
-          borderColor: "green",
-          borderWidth: 3,
-        },
-        {
-          label: "Russisch",
-          data: [
-            17000, 50000, 80000, 52000, 146000, 113000, 96000, 89000, 79000,
-            76000,
-          ],
-          borderWidth: 1,
-          backgroundColor: "purple",
-          borderColor: "purple",
-          borderWidth: 3,
-        },
+    type: "doughnut",
+    data:  {
+      labels: [
+        'Ukraine',
+        '2022_Russian_invasion_of_Ukraine',
+        'Putin'
       ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [2373594, 2095287, 1506221],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+      }],
     },
     options: {
       layout: {
@@ -168,28 +151,27 @@ function erstelleUkraineDiagramme() {
       plugins: {
         title: {
           display: true,
-          text: 'Aufrufzahlen des Wikipedia Artikels "Ukraine" in verschiedenen Sprachen',
+          text: 'en.wikipedia.org',
         },
         legend: {
           position: "right",
         },
       },
-      scales: {
-        y: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: "Aufrufe",
-          },
-        },
-        x: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: "Tage seit Beginn der Krise",
-          },
-        },
-      },
+      // scales: {
+      //   y: {
+      //     beginAtZero: true,
+      //     title: {
+      //       display: false,
+      //       text: "Aufrufe",
+      //     },
+      //   },
+      //   x: {
+      //     beginAtZero: true,
+      //     title: {
+      //       display: false,
+      //     },
+      //   },
+      // },
     },
   });
 }
