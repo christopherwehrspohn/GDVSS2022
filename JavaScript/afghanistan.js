@@ -1,3 +1,20 @@
+function getDataURL(url){
+  //STOP asynchronous mist
+  $.ajaxSetup({
+  async: false
+  });
+
+  var jsonCall = $.getJSON(url,function(result){
+      out = result;
+  });
+  //Return Dataset
+  return out
+  
+  //START asynchronous mist
+  $.ajaxSetup({
+  async: true
+  });
+}
 window.addEventListener('DOMContentLoaded', function () {
 
   const comboBoxArtikel = document.getElementById('linkAfghanistan').addEventListener('click', function() {
