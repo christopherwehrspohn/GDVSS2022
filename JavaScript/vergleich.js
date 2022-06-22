@@ -1,16 +1,12 @@
 window.addEventListener("DOMContentLoaded", function () {
   var dataAfghanistan = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Afghanistan/daily/20150101/20220509"
-  );
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Afghanistan/daily/20150101/20220509", 200);
   var dataUkraine = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Ukraine/daily/20150101/20220509"
-  );
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Ukraine/daily/20150101/20220509", 200);
   var dataCorona = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20150101/20220509"
-  );
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20200101/20220509", 200);
   var dataLibanon = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Lebanon/daily/20150101/20220509"
-  );
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Lebanon/daily/20150101/20220509", 200);
 
   $("#linkvergleich").addClass("highlights");
   $("canvas").css("margin-top", "5px");
@@ -59,13 +55,32 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // $(document).ready(function () {
+  //   $("#linkModus").click(function () {
+  //     if($("canvas").hasClass("dunkel")){
+  //       Chart.defaults.font.family = '"Poppins" , sans-serif';
+  //       Chart.defaults.color = "#11101D";
+  //       Chart.defaults.plugins.title.font.size = 20;
+  //       Chart.defaults.plugins.title.font.weight = "normal";
+
+  //       $("canvas").removeClass("dunkel");
+  //       erstelleStartseiteErstesDiagramm();
+  //       erstelleStartseiteZweitesDiagramm();
+  //     }else{
+  //       Chart.defaults.font.family = '"Poppins" , sans-serif';
+  //       Chart.defaults.color = "#fff";
+  //       Chart.defaults.plugins.title.font.size = 20;
+  //       Chart.defaults.plugins.title.font.weight = "normal";
+  //       erstelleStartseiteErstesDiagramm();
+  //       erstelleStartseiteZweitesDiagramm();
+
+  //       $("canvas").addClass("dunkel");
+  //     }
+  //   });
+  // });
+
   versteckeZweitesCanvas();
-  erstelleStartseiteErstesDiagramm(
-    dataUkraine,
-    dataCorona,
-    dataAfghanistan,
-    dataLibanon
-  );
+  erstelleStartseiteErstesDiagramm();
   erstelleStartseiteZweitesDiagramm(
     dataUkraine,
     dataCorona,
@@ -93,26 +108,21 @@ window.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function erstelleStartseiteErstesDiagramm(
-) {
+function erstelleStartseiteErstesDiagramm() {
   var dataAfghanistan = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Afghanistan/daily/20150101/20220509"
-  );
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Afghanistan/daily/20150101/20220509", 200);
   var dataUkraine = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Ukraine/daily/20150101/20220509"
-  );
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Ukraine/daily/20150101/20220509", 200);
   var dataCorona = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20150101/20220509"
-  );
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20200101/20220509", 200);
   var dataLibanon = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Lebanon/daily/20150101/20220509"
-  );
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Lebanon/daily/20150101/20220509", 200);
   if (window.diagramm != null) {
     window.diagramm.destroy();
   }
 
   Chart.defaults.font.family = '"Poppins" , sans-serif';
-  Chart.defaults.color = "white";
+  Chart.defaults.color = "#11101D";
   Chart.defaults.plugins.title.font.size = 20;
   Chart.defaults.plugins.title.font.weight = "normal";
 
@@ -200,12 +210,13 @@ function erstelleStartseiteZweitesDiagramm(
   if (window.diagramm2 != null) {
     window.diagramm2.destroy();
   }
-
+    console.log(dataCorona);
     var i;
-    var ukraineTag = dataUkraine[60].y;
-    var coronaTag = dataCorona[60].y;
-    var afghanistanTag = dataAfghanistan[60].y;
-    var libanonTag = dataLibanon[60].y;
+
+    var ukraineTag = getHochpunkt(dataUkraine);
+    var coronaTag = getHochpunkt(dataCorona);
+    var afghanistanTag = getHochpunkt(dataAfghanistan);
+    var libanonTag = getHochpunkt(dataLibanon);
 
     for (i = 0; i < 201; i++) {
       if (dataUkraine[i] == null) {
@@ -226,7 +237,7 @@ function erstelleStartseiteZweitesDiagramm(
       }
     }
 
-  $(".col-6").addClass("col-12");
+  $(".col-4").addClass("col-12");
 
   const diagrammBox2 = document.getElementById("diagrammBox2").getContext("2d");
   window.diagramm2 = new Chart(diagrammBox2, {
@@ -299,6 +310,16 @@ function erstelleStartseiteZweitesDiagramm(
   });
 
  
+
+  function getHochpunkt(array) {
+    var hoechsterPunkt = 0;
+    for (i = 0; i < array.length - 1; i++) {
+      if (array[i].y > hoechsterPunkt) {
+        hoechsterPunkt = array[i].y;
+      }
+    }
+    return hoechsterPunkt;
+  }
 }
 function erstelleStartseiteDrittesDiagramm(
   dataUkraine,
@@ -677,8 +698,8 @@ function erstelleStartseiteFuenftesDiagramm(
   });
 }
 function versteckeZweitesCanvas() {
-  // const zweitesCanvas = document.getElementById("diagrammBox2");
-  // zweitesCanvas.style.display = "none";
   const drittesCanvas = document.getElementById("diagrammBox3");
   drittesCanvas.style.display = "none";
+  const viertesCanvas = document.getElementById("diagrammBox4");
+  viertesCanvas.style.display = "none";
 }

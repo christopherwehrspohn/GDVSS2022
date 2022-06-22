@@ -1,5 +1,4 @@
-function getDataURL(url) {
-  //STOP asynchronous mist
+function getJSON(url) {
   $.ajaxSetup({
     async: false,
   });
@@ -7,10 +6,9 @@ function getDataURL(url) {
   var jsonCall = $.getJSON(url, function (result) {
     out = result;
   });
-  //Return Dataset
+
   return out;
 
-  //START asynchronous mist
   $.ajaxSetup({
     async: true,
   });
@@ -32,40 +30,52 @@ function getFilteredData(data) {
   }
   return data;
 }
-function cutout(dataAlsArray) {
+function cutout(dataAlsArray, tage) {
   var hoechsterPunkt = 0;
   var tagDesHochpunkts = 0;
   var beginn = 0;
+
   for (i = 0; i < dataAlsArray.length - 1; i++) {
     if (dataAlsArray[i].y > hoechsterPunkt) {
       hoechsterPunkt = dataAlsArray[i].y;
       tagDesHochpunkts = i;
     }
   }
-  if (tagDesHochpunkts < 60) {
-    beginn = 0;
-  } else {
-    beginn = tagDesHochpunkts - 60;
-  }
-  for (i = 0; i < beginn; i++) {
-    dataAlsArray.splice(0, 1);
-  }
 
-  if (dataAlsArray.length - 200 > 0) {
-    var laenge = dataAlsArray.length - 200;
-    for (i = 0; i < laenge; i++) {
-      dataAlsArray.splice(200, 1);
+  if (tagDesHochpunkts < 60) {
+
+    beginn = (tagDesHochpunkts - 60) * -1;
+
+    for(i = 0; i < dataAlsArray.length; i++){
+      var nummer = beginn + i;
+      dataAlsArray[i].x = "" + nummer + "";
+    }
+    console.log(dataAlsArray);
+  }else {
+    beginn = tagDesHochpunkts - 60;
+
+    for (i = 0; i < beginn; i++) {
+      dataAlsArray.splice(0, 1);
+    }
+    for (i = 0; i < dataAlsArray.length; i++) {
+      dataAlsArray[i].x = "" + i + "";
     }
   }
-  for (i = 0; i < dataAlsArray.length; i++) {
-    dataAlsArray[i].x = "" + i + "";
+
+
+  if (dataAlsArray.length - tage > 0) {
+    var laenge = dataAlsArray.length - tage;
+    for (i = 0; i < laenge; i++) {
+      dataAlsArray.splice(tage, 1);
+    }
   }
+
   return dataAlsArray;
 }
-function getData(url) {
-  var data = getDataURL(url);
-  var dataAlsArray = getFilteredData(data).items;
-  var dataErgebnis = cutout(dataAlsArray);
+function getData(url, tage) {
+  var json = getJSON(url);
+  var dataAlsArray = getFilteredData(json).items;
+  var dataErgebnis = cutout(dataAlsArray, tage);
 
   return dataErgebnis;
 }
