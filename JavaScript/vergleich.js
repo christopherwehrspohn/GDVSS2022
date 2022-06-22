@@ -700,6 +700,6 @@ function erstelleStartseiteFuenftesDiagramm(
 function versteckeZweitesCanvas() {
   const drittesCanvas = document.getElementById("diagrammBox3");
   drittesCanvas.style.display = "none";
-  const viertesCanvas = document.getElementById("diagrammBox4");
+  const viertesCanvas = document.getElementById("diagrammBoxMitte");
   viertesCanvas.style.display = "none";
 }

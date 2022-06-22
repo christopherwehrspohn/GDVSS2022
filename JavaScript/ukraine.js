@@ -37,27 +37,27 @@ function erstelleUkraineDiagramme() {
     type: "line",
     data: {
       datasets: [
-        {
-          label: "Ukraine",
-          data: dataUkraine,
-          borderColor: "orange",
-          backgroundColor: "orange",
-          borderWidth: 2,
-          pointRadius: 0,
-        },
-        {
-          label: "NATO",
-          data: dataNato,
-          borderColor: "blue",
-          backgroundColor: "blue",
-          borderWidth: 2,
-          pointRadius: 0,
-        },
+        // {
+        //   label: "Ukraine",
+        //   data: dataUkraine,
+        //   borderColor: "orange",
+        //   backgroundColor: "orange",
+        //   borderWidth: 2,
+        //   pointRadius: 0,
+        // },
+        // {
+        //   label: "NATO",
+        //   data: dataNato,
+        //   borderColor: "blue",
+        //   backgroundColor: "blue",
+        //   borderWidth: 2,
+        //   pointRadius: 0,
+        // },
         {
           label: "RussoUkrainianWar",
           data: dataRussoUkrainianWar,
-          borderColor: "red",
-          backgroundColor: "red",
+          borderColor:'rgb(54, 162, 235)',
+          backgroundColor: 'rgb(54, 162, 235)',
           borderWidth: 2,
           pointRadius: 0,
         },
@@ -89,12 +89,27 @@ function erstelleUkraineDiagramme() {
                   side: 10
                 }
               },
+              // line1: {
+              //   type: 'line',
+              //   xMin: 60,
+              //   xMax: 60,
+              //   borderColor: 'rgb(255, 99, 132)',
+              //   borderWidth: 2,
+              // },
+              // line2: {
+              //   type: 'line',
+              //   xMin: 58,
+              //   xMax: 58,
+              //   borderColor: 'rgb(255, 99, 132)',
+              //   borderWidth: 2,
+              // },
               label2: {
                 type: 'label',
                 xValue: 58,
                 yValue: 0,
                 xAdjust: -230,
                 yAdjust: -100,
+                borderRadius: 15,
                 backgroundColor: 'rgba(245,245,245)',
                 content: ['Anerkennung der Volksrepubliken', '"Luhansk" und "Donezk" durch Russland'],
                 textAlign: 'start',
@@ -143,7 +158,7 @@ function erstelleUkraineDiagramme() {
   if (drittesCanvas.style.display === "none") {
     drittesCanvas.style.display = "block";
   }
-  const viertesCanvas = document.getElementById("diagrammBox4");
+  const viertesCanvas = document.getElementById("diagrammBoxMitte");
   if (viertesCanvas.style.display === "none") {
     viertesCanvas.style.display = "block";
   }
@@ -179,7 +194,7 @@ function erstelleUkraineDiagramme() {
           text: 'en.wikipedia.org',
         },
         legend: {
-          position: "right",
+          position: "bottom",
         },
       },
       // scales: {
@@ -206,17 +221,18 @@ function erstelleUkraineDiagramme() {
     type: "doughnut",
     data:  {
       labels: [
-        'Ukraine',
-        '2022_Russian_invasion_of_Ukraine',
-        'Putin'
+        'Russischer_Überfall_auf_die_Ukraine_2022',
+        'Krieg_im_Donbas',
+        'Russisch-Ukrainischer_Krieg',
+        'SWIFT'
       ],
       datasets: [{
-        label: 'My First Dataset',
-        data: [2373594, 2095287, 1506221],
+        data: [809398, 409978, 339141, 331899],
         backgroundColor: [
           'rgb(255, 99, 132)',
           'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)'
+          'rgb(255, 205, 86)',
+          'rgb(53, 230, 82)'
         ],
         hoverOffset: 4
       }],
@@ -229,10 +245,10 @@ function erstelleUkraineDiagramme() {
       plugins: {
         title: {
           display: true,
-          text: 'en.wikipedia.org',
+          text: 'ru.wikipedia.org',
         },
         legend: {
-          position: "right",
+          position: "bottom",
         },
       },
       // scales: {
@@ -244,8 +260,8 @@ function erstelleUkraineDiagramme() {
       //     },
       //   },
       //   x: {
-      //     beginAtZero: true,
-      //     title: {
+        //     beginAtZero: true,
+        //     title: {
       //       display: false,
       //     },
       //   },
@@ -256,4 +272,44 @@ function erstelleUkraineDiagramme() {
   if (window.diagramm4 != null) {
     window.diagramm4.destroy();
   }
+  const diagrammBox4 = document.getElementById("diagrammBoxMitte").getContext("2d");
+  window.diagramm4 = new Chart(diagrammBox4, {
+    type: "doughnut",
+    data:  {
+      labels: [
+        'Russischer_Überfall_auf_die_Ukraine_2022',
+        'Krieg_im_Donbas',
+        'Russisch-Ukrainischer_Krieg',
+        'SWIFT'
+      ],
+      datasets: [{
+        data: [809398, 409978, 339141, 331899],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)',
+          'rgb(53, 230, 82)'
+        ],
+        hoverOffset: 4
+      }],
+    },
+    options: {
+      layout: {
+        padding: 10,
+      },
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'uk.wikipedia.org',
+        },
+        legend: {
+          position: "bottom",
+        }
+      }
+    }
+  });
+
+  
+
 }
