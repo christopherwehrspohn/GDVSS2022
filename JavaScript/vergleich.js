@@ -126,7 +126,7 @@ function erstelleStartseiteErstesDiagramm() {
   Chart.defaults.plugins.title.font.size = 20;
   Chart.defaults.plugins.title.font.weight = "normal";
 
-  const diagrammBox = document.getElementById("diagrammBox").getContext("2d");
+  const diagrammBox = document.getElementById("canvasOben").getContext("2d");
   window.diagramm = new Chart(diagrammBox, {
     type: "line",
     data: {
@@ -239,7 +239,7 @@ function erstelleStartseiteZweitesDiagramm(
 
   $(".col-4").addClass("col-12");
 
-  const diagrammBox2 = document.getElementById("diagrammBox2").getContext("2d");
+  const diagrammBox2 = document.getElementById("canvasLinks").getContext("2d");
   window.diagramm2 = new Chart(diagrammBox2, {
     type: "line",
     data: {
@@ -357,7 +357,7 @@ function erstelleStartseiteDrittesDiagramm(
   }
   $(".col-6").addClass("col-12");
 
-  const diagrammBox2 = document.getElementById("diagrammBox2").getContext("2d");
+  const diagrammBox2 = document.getElementById("canvasLinks").getContext("2d");
   window.diagramm2 = new Chart(diagrammBox2, {
     type: "line",
     data: {
@@ -482,7 +482,7 @@ function erstelleStartseiteViertesDiagramm(
   }
   $(".col-6").addClass("col-12");
 
-  const diagrammBox2 = document.getElementById("diagrammBox2").getContext("2d");
+  const diagrammBox2 = document.getElementById("canvasLinks").getContext("2d");
   window.diagramm2 = new Chart(diagrammBox2, {
     type: "line",
     data: {
@@ -627,7 +627,7 @@ function erstelleStartseiteFuenftesDiagramm(
   }
   $(".col-6").addClass("col-12");
 
-  const diagrammBox2 = document.getElementById("diagrammBox2").getContext("2d");
+  const diagrammBox2 = document.getElementById("canvasLinks").getContext("2d");
   window.diagramm2 = new Chart(diagrammBox2, {
     type: "line",
     data: {
@@ -698,8 +698,8 @@ function erstelleStartseiteFuenftesDiagramm(
   });
 }
 function versteckeZweitesCanvas() {
-  const drittesCanvas = document.getElementById("diagrammBox3");
+  const drittesCanvas = document.getElementById("canvasRechts");
   drittesCanvas.style.display = "none";
-  const viertesCanvas = document.getElementById("diagrammBoxMitte");
+  const viertesCanvas = document.getElementById("canvasMitte");
   viertesCanvas.style.display = "none";
 }
