@@ -10,20 +10,20 @@ window.addEventListener('DOMContentLoaded', function () {
    
     var dataRussoUkrainianWar = getData("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20150101/20220509", 200);
 
-    if (window.diagramm != null) {
-      window.diagramm.destroy();
+    if (window.chartOben != null) {
+      window.chartOben.destroy();
     }
-    if (window.diagramm2 != null) {
-      window.diagramm2.destroy();
+    if (window.chartLinks != null) {
+      window.chartLinks.destroy();
     }
-    if (window.diagramm3 != null) {
-      window.diagramm3.destroy();
+    if (window.chartRechts != null) {
+      window.chartRechts.destroy();
     }
-    if (window.diagramm4 != null) {
-      window.diagramm4.destroy();
+    if (window.chartMitte != null) {
+      window.chartMitte.destroy();
     }
     const canvasOben = document.getElementById("canvasOben").getContext("2d");
-    window.diagramm = new Chart(canvasOben, {
+    window.chartOben = new Chart(canvasOben, {
       type: "line",
       data: {
         datasets: [
@@ -94,7 +94,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
     });
 
-    if (window.diagramm2 != null) {
-      window.diagramm2.destroy();
+    if (window.chartLinks != null) {
+      window.chartLinks.destroy();
     }
 };
