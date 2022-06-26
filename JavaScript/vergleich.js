@@ -1,11 +1,11 @@
 window.addEventListener("DOMContentLoaded", function () {
-  var dataAfghanistan = getData(
+const dataAfghanistan = getData(
     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Afghanistan/daily/20150101/20220509", 200);
-  var dataUkraine = getData(
+const dataUkraine = getData(
     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Ukraine/daily/20150101/20220509", 200);
-  var dataCorona = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20200101/20220509", 200);
-  var dataLibanon = getData(
+const dataCorona = getData(
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20150101/20220509", 200);
+const dataLibanon = getData(
     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Lebanon/daily/20150101/20220509", 200);
 
   $("#linkvergleich").addClass("highlights");
@@ -90,7 +90,7 @@ function erstelleStartseiteErstesDiagramm() {
   var dataUkraine = getData(
     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Ukraine/daily/20150101/20220509", 200);
   var dataCorona = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20200101/20220509", 200);
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20150101/20220509", 200);
   var dataLibanon = getData(
     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Lebanon/daily/20150101/20220509", 200);
   if (window.chartOben != null) {
@@ -114,6 +114,7 @@ function erstelleStartseiteErstesDiagramm() {
           backgroundColor: "orange",
           borderWidth: 2,
           pointRadius: 0,
+          pointHitRadius: 20,
         },
         {
           label: "Coronavirus",
@@ -122,6 +123,7 @@ function erstelleStartseiteErstesDiagramm() {
           borderColor: "green",
           borderWidth: 2,
           pointRadius: 0,
+          pointHitRadius: 20,
         },
         {
           label: "Libanon",
@@ -130,6 +132,7 @@ function erstelleStartseiteErstesDiagramm() {
           borderColor: "purple",
           borderWidth: 2,
           pointRadius: 0,
+          pointHitRadius: 20,
         },
         {
           label: "Afghanistan",
@@ -138,6 +141,7 @@ function erstelleStartseiteErstesDiagramm() {
           borderColor: "red",
           borderWidth: 2,
           pointRadius: 0,
+          pointHitRadius: 20,
         },
       ],
     },
@@ -189,7 +193,6 @@ function erstelleStartseiteZweitesDiagramm(
     window.chartLinks.destroy();
   }
 
-    console.log(dataCorona);
     var i;
 
     var ukraineTag = getHochpunkt(dataUkraine);

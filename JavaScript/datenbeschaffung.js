@@ -51,8 +51,6 @@ function cutout(dataAlsArray, tage) {
       dataAlsArray[i].x = "" + nummer + "";
     }
 
-    console.log(dataAlsArray);
-
   }else {
 
     beginn = tagDesHochpunkts - 60;
