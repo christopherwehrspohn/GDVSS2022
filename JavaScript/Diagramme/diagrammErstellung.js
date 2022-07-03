@@ -134,6 +134,12 @@ function erstelleLinienDiagramm(
           onClick(){
             window.open(artikelUrl);
           },
+          onHover(event){
+            event.native.target.style.cursor = 'pointer'; 
+          },
+          onLeave(event){
+            event.native.target.style.cursor = 'default'; 
+          },
           position: "right",
         },
         tooltip: {
