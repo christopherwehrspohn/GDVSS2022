@@ -11,6 +11,9 @@ function getHochpunkt(array) {
 function cssEinstellungenAnpassenStartseite() {
     $("#linkvergleich").addClass("highlights");
     $("canvas").css("margin-top", "5px");  
+    $("#wrapper").css("display", "none");
+    $("canvas").css("margin-top", "5px");
+    $("#auswahlNormalisierung").css("display", "block");
 }
 
 function erstelleStartseiteErstesDiagramm() {

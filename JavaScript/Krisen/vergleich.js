@@ -14,6 +14,7 @@ cssEinstellungenAnpassenStartseite();
   const auswahl = document.getElementById("auswahlNormalisierung");
 
   auswahl.addEventListener("change", function () {
+    
     if (auswahl.value == "median") {
       erstelleStartseiteViertesDiagramm(
         dataUkraine,
@@ -62,10 +63,9 @@ cssEinstellungenAnpassenStartseite();
   document
     .getElementById("linkvergleich")
     .addEventListener("click", function () {
-      $("canvas").css("margin-top", "5px");
-      $("#auswahlNormalisierung").css("display", "block");
 
-      console.log(dataUkraine);
+      cssEinstellungenAnpassenStartseite();
+
       erstelleStartseiteErstesDiagramm(
         dataUkraine,
         dataCorona,

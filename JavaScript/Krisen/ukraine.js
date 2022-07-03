@@ -55,66 +55,68 @@ function erstelleUkraineDiagramme() {
     window.chartOben,
     dataRussoUkrainianWar,
     "RussoUkrainianWar",
-    "Artikel zum Krieg in der Ukraine",
+    "Artikel zum 'Krieg in der Ukraine'",
     label1,
     label2
   );
 
-  // rechtes Diagramm
-  var labelsArrayRechts = [
-    "Ukraine",
-    "2022_Russian_invasion_of_Ukraine",
-    "Putin",
-    "Selensky",
-  ];
+  // // rechtes Diagramm
+  // var labelsArrayRechts = [
+  //   "Ukraine",
+  //   "2022_Russian_invasion_of_Ukraine",
+  //   "Putin",
+  //   "Selensky",
+  // ];
 
-  var dataArrayRechts = [2373594, 2095287, 1506221, 1246332];
+  // var dataArrayRechts = [2373594, 2095287, 1506221, 1246332];
 
-  window.chartRechts = erstelleKreisDiagramm(
-    "canvasRechts",
-    window.chartRechts,
-    dataArrayRechts,
-    "doughnut",
-    labelsArrayRechts,
-    "en.wikipedia.org"
-  );
+  // window.chartRechts = erstelleKreisDiagramm(
+  //   "canvasRechts",
+  //   window.chartRechts,
+  //   dataArrayRechts,
+  //   "doughnut",
+  //   labelsArrayRechts,
+  //   "en.wikipedia.org"
+  // );
 
-  // linkes Diagramm
+  // // linkes Diagramm
 
-  labelsArrayLinks = [
-    "Russischer_Überfall_auf_die_Ukraine_2022",
-    "Krieg_im_Donbas",
-    "Russisch-Ukrainischer_Krieg",
-    "SWIFT",
-  ];
+  // labelsArrayLinks = [
+  //   "Russischer_Überfall_auf_die_Ukraine_2022",
+  //   "Krieg_im_Donbas",
+  //   "Russisch-Ukrainischer_Krieg",
+  //   "SWIFT",
+  // ];
 
-  dataArrayLinks = [809398, 409978, 339141, 331899];
+  // dataArrayLinks = [809398, 409978, 339141, 331899];
 
-  window.chartLinks = erstelleKreisDiagramm(
-    "canvasLinks",
-    window.chartLinks,
-    dataArrayLinks,
-    "doughnut",
-    labelsArrayLinks,
-    "ru.wikipedia.org"
-  );
-  // mittleres Diagramm
+  // window.chartLinks = erstelleKreisDiagramm(
+  //   "canvasLinks",
+  //   window.chartLinks,
+  //   dataArrayLinks,
+  //   "doughnut",
+  //   labelsArrayLinks,
+  //   "ru.wikipedia.org"
+  // );
+  // // mittleres Diagramm
 
-  labelsArrayMitte = [
-    "Russischer_Überfall_auf_die_Ukraine_2022",
-    "Krieg_im_Donbas",
-    "Russisch-Ukrainischer_Krieg",
-    "SWIFT",
-  ];
+  // labelsArrayMitte = [
+  //   "Russischer_Überfall_auf_die_Ukraine_2022",
+  //   "Krieg_im_Donbas",
+  //   "Russisch-Ukrainischer_Krieg",
+  //   "SWIFT",
+  // ];
 
-  dataArrayMitte = [809398, 409978, 339141, 331899];
+  // dataArrayMitte = [809398, 409978, 339141, 331899];
 
-  window.chartMitte = erstelleKreisDiagramm(
-    "canvasMitte",
-    window.chartMitte,
-    dataArrayMitte,
-    "doughnut",
-    labelsArrayMitte,
-    "uk.wikipedia.org"
-  );
+  // window.chartMitte = erstelleKreisDiagramm(
+  //   "canvasMitte",
+  //   window.chartMitte,
+  //   dataArrayMitte,
+  //   "doughnut",
+  //   labelsArrayMitte,
+  //   "uk.wikipedia.org"
+  // );
+
+  window.chartLinks = erstelleStackedBarChart();
 }

@@ -18,7 +18,7 @@
 }
 #diagrammLinks{
   width: 100%;
-  height: 45vh;
+  height: 40vh;
 }
 #diagrammRechts{
   width: 100%;
@@ -38,7 +38,6 @@ canvas {
   border-radius: 15px;
   box-shadow: 0px 2px 15px rgba(25, 25, 25, 0.27);
   margin-left: 25px;
-  margin-top: 25px;
 }
 .navi{
   position: fixed;
@@ -136,7 +135,7 @@ canvas {
 .dashboard .text{
   display: inline-block;
   color: #11101d;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 500;
   margin: 18px
 }
@@ -153,26 +152,13 @@ canvas {
   margin-left: 30px;
   margin-top: 30px;
 }
-#linkModus{
-  display: flex;
-  margin-top: 22px;
-  margin-right: 50px;
-  height: 25px;
-  width: 25px;
-  border-radius: 12px;
-}
-#linkModus:hover #nacht{
-  display: inline;
-}
-
-#nacht{
-  display: none;
-}
-#linkModus:hover #tag{
-  display: none;
-}
 .wrapper{
   display: flex;
   justify-content: space-between;
+}
+#wrapper{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 18px;
 }
 

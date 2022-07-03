@@ -1,10 +1,8 @@
 function cssEinstellungenAnpassen() {
   // ComboBox zur Normalisierung ausblenden
   $("#auswahlNormalisierung").css("display", "none");
+  $("#wrapper").css("display", "block");
 
-  $("#canvasLinks").css("margin-top", "25px");
-  $("#canvasMitte").css("margin-top", "25px");
-  $("#canvasRechts").css("margin-top", "25px");
 
   // Alle verborgenen Canvasse einblenden
   const linkesCanvas = document.getElementById("canvasLinks");
@@ -180,4 +178,93 @@ function erstelleLinienDiagramm(
     },
   });
   return globaleVariable;
+}
+function erstelleStackedBarChart(){
+  $(".col-4").addClass("col-12");
+
+  if (window.chartLinks != null) {
+    window.chartLinks.destroy();
+  }
+  if (window.charRechts != null) {
+    window.charRechts.destroy();
+  }
+  if (window.chartMitte != null) {
+    window.chartMitte.destroy();
+  }
+  const canvas = document.getElementById("canvasLinks").getContext("2d");
+  
+const labels = ['en.wikipedia.org','ru.wikipedia.org','uk.wikipedia.org'];
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: 'Ukrainekrieg',
+      data: [3434668, 1558517, 62420],
+      backgroundColor: "#44546A",
+    },
+    {
+      label: 'Ukraine',
+      data: [2373594,146565,11149],
+      backgroundColor: "#4472C4",
+    },
+    {
+      label: 'Putin',
+      data: [1506221,113525,12358],
+      backgroundColor: "#ED7D31",
+    },
+    {
+      label: 'Ballistische_Rakete',
+      data: [10435,102792,75432],
+      backgroundColor:  "#A5A5A5",
+    },
+    {
+      label: 'SWIFT',
+      data: [151576,331899,42211],
+      backgroundColor:  "#FFC000",
+    },
+    {
+      label: 'Mobilmachung',
+      data: [5249,32553,39382],
+      backgroundColor:  "#70AD47",
+    },
+  ]
+};
+const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    layout: {
+      padding: 10,
+    },
+    //      responsive: false,
+    maintainAspectRatio: false,
+    plugins: {
+      stacked100:{
+        enable: true,
+      },
+      title: {
+        display: true,
+        text: "Themen am Hochpunkt der Krise",
+      },
+      legend: {
+        position: "right",
+      },
+    },
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Aufrufe",
+        },
+        stacked: true
+      }
+    }
+  }
+};
+var globaleVariable = new Chart(canvas, config
+  );
+return globaleVariable;
 }
