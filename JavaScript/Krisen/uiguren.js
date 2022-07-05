@@ -40,36 +40,46 @@ window.addEventListener("DOMContentLoaded", function () {
       null
     );
 
-const labels = ['en.wikipedia.org','de.wikipedia.org','es.wikipedia.org'];
+const labels = ['en.wikipedia.org','de.wikipedia.org','zh.wikipedia.org'];
   const datasets = [
     {
-      label: '',
-      data: [0, 0, 0],
+      label: 'Pam & Tommy',
+      data: [503464, 19585, 1047],
       backgroundColor: "#44546A",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Reacher_(TV_series)',
+      data: [389401,19962,0],
       backgroundColor: "#4472C4",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: '2022_Winter_Olympics',
+      data: [250087,37048,45816],
       backgroundColor: "#ED7D31",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Ich_bin_ein_Star_–_Holt_mich_hier_raus!',
+      data: [612,167144,0],
       backgroundColor:  "#A5A5A5",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Franz_Klammer',
+      data: [2370,75957,11],
       backgroundColor:  "#FFC000",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Who Rules the World (TV series)',
+      data: [0,0,30042],
+      backgroundColor:  "#70AD47",
+    },
+    {
+      label: 'LE_SSERAFIM',
+      data: [0,0,22080],
+      backgroundColor:  "#70AD47",
+    },
+    {
+      label: 'Our Blues',
+      data: [642,0,17999],
       backgroundColor:  "#70AD47",
     },
   ];
