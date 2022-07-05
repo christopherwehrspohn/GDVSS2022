@@ -13,18 +13,18 @@ function erstelleAfghanistanDiagramme() {
 
     // Daten aus API laden
     var Afghanistan_conflict_1978_present = getData(
-      "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Afghanistan_conflict_(1978–present)/daily/20150101/20220509",
+      "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/2021_Taliban_offensive/daily/20150101/20220509",
       200
     );
   
-  window.chartOben = erstelleLinienDiagramm("https://en.wikipedia.org/wiki/Afghanistan_conflict_(1978–present)",
-  "canvasOben", window.chartOben, Afghanistan_conflict_1978_present, "Afghanistan_conflict_(1978–present)", "Artikel zum Krieg in Afghanistan");
+  window.chartOben = erstelleLinienDiagramm("https://en.wikipedia.org/wiki/2021_Taliban_offensive",
+  "canvasOben", window.chartOben, Afghanistan_conflict_1978_present, "2021_Taliban_offensive", "Artikel zum Krieg in Afghanistan");
 
   const labels = ['en.wikipedia.org','de.wikipedia.org','es.wikipedia.org'];
   const datasets = [
     {
-      label: '',
-      data: [0, 0, 0],
+      label: ' ',
+      data: [0,0,0],
       backgroundColor: "#44546A",
     },
     {
