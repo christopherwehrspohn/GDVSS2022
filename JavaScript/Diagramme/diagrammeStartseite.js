@@ -21,15 +21,19 @@ function cssEinstellungenAnpassenStartseite() {
 function erstelleStartseiteErstesDiagramm() {
 
   const dataAfghanistan = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Afghanistan/daily/20150101/20220509", 200);
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/2021_Taliban_offensive/daily/20150101/20220509", 179);
 const dataUkraine = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Ukraine/daily/20150101/20220509", 200);
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Russo-Ukrainian_War/daily/20150101/20220509", 200);
 const dataCorona = getData(
     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20150101/20220509", 200);
 const dataLibanon = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Lebanon/daily/20150101/20220509", 200);
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/2020_Beirut_explosions/daily/20150101/20211201", 141);
 const dataAhrtal = getData(
-      "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/de.wikipedia/all-access/all-agents/Ahrtal/daily/20150101/20220509",
+      "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/2021_European_floods/daily/20150101/20220509",
+      141
+    );
+    const dataUiguren = getData(
+      "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Uyghur_genocide/daily/20150101/20220509",
       200
     );
 
@@ -50,8 +54,8 @@ const dataAhrtal = getData(
           {
             label: "Ukrainekrieg",
             data: dataUkraine,
-            borderColor: "orange",
-            backgroundColor: "orange",
+            borderColor: "#44546A",
+            backgroundColor: "#44546A",
             borderWidth: 2,
             pointRadius: 0,
             pointHitRadius: 20,
@@ -59,8 +63,8 @@ const dataAhrtal = getData(
           {
             label: "Corona-Pandemie",
             data: dataCorona,
-            backgroundColor: "green",
-            borderColor: "green",
+            backgroundColor: "rgb(54, 162, 235)",
+            borderColor: "rgb(54, 162, 235)",
             borderWidth: 2,
             pointRadius: 0,
             pointHitRadius: 20,
@@ -68,8 +72,8 @@ const dataAhrtal = getData(
           {
             label: "Explosion im Libanon",
             data: dataLibanon,
-            backgroundColor: "purple",
-            borderColor: "purple",
+            backgroundColor: "#ED7D31",
+            borderColor: "#ED7D31",
             borderWidth: 2,
             pointRadius: 0,
             pointHitRadius: 20,
@@ -77,8 +81,8 @@ const dataAhrtal = getData(
           {
             label: "Afghanistankrieg",
             data: dataAfghanistan,
-            backgroundColor: "red",
-            borderColor: "red",
+            backgroundColor: "#A5A5A5",
+            borderColor: "#A5A5A5",
             borderWidth: 2,
             pointRadius: 0,
             pointHitRadius: 20,
@@ -86,8 +90,17 @@ const dataAhrtal = getData(
           {
             label: "Überschwemmung im Ahrtal",
             data: dataAhrtal,
-            backgroundColor: "blue",
-            borderColor: "blue",
+            backgroundColor: "#FFC000",
+            borderColor: "#FFC000",
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHitRadius: 20,
+          },
+          {
+            label: "Verfolgung der Uiguren",
+            data: dataUiguren,
+            backgroundColor: "#70AD47",
+            borderColor: "#70AD47",
             borderWidth: 2,
             pointRadius: 0,
             pointHitRadius: 20,
@@ -134,7 +147,9 @@ const dataAhrtal = getData(
     dataUkraine,
     dataCorona,
     dataAfghanistan,
-    dataLibanon
+    dataLibanon,
+    dataAhrtal,
+    dataUiguren
   ) {
     if (window.chartLinks != null) {
       window.chartLinks.destroy();
@@ -144,8 +159,10 @@ const dataAhrtal = getData(
       var coronaTag = getHochpunkt(dataCorona);
       var afghanistanTag = getHochpunkt(dataAfghanistan);
       var libanonTag = getHochpunkt(dataLibanon);
-  
-      var ergebnis = getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghanistanTag, dataLibanon, libanonTag, dataCorona, coronaTag);
+      var ahrtalTag = getHochpunkt(dataAhrtal);
+      var uigurenTag = getHochpunkt(dataUiguren);
+
+      var ergebnis = getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghanistanTag, dataLibanon, libanonTag, dataCorona, coronaTag, dataAhrtal, ahrtalTag, dataUiguren, uigurenTag);
         console.log(ergebnis.dataAfghanistan);
    
     const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
@@ -156,34 +173,56 @@ const dataAhrtal = getData(
           {
             label: "Ukrainekrieg",
             data: ergebnis.dataUkraine,
-            borderColor: "orange",
-            backgroundColor: "orange",
+            borderColor: "#44546A",
+            backgroundColor: "#44546A",
             borderWidth: 2,
             pointRadius: 0,
+            pointHitRadius: 20,
           },
           {
             label: "Corona-Pandemie",
             data: ergebnis.dataCorona,
-            backgroundColor: "green",
-            borderColor: "green",
+            backgroundColor: "rgb(54, 162, 235)",
+            borderColor: "rgb(54, 162, 235)",
             borderWidth: 2,
             pointRadius: 0,
+            pointHitRadius: 20,
           },
           {
             label: "Explosion im Libanon",
             data: ergebnis.dataLibanon,
-            backgroundColor: "purple",
-            borderColor: "purple",
+            backgroundColor: "#ED7D31",
+            borderColor: "#ED7D31",
             borderWidth: 2,
             pointRadius: 0,
+            pointHitRadius: 20,
           },
           {
             label: "Afghanistankrieg",
             data: ergebnis.dataAfghanistan,
-            backgroundColor: "red",
-            borderColor: "red",
+            backgroundColor: "#A5A5A5",
+            borderColor: "#A5A5A5",
             borderWidth: 2,
             pointRadius: 0,
+            pointHitRadius: 20,
+          },
+          {
+            label: "Überschwemmung im Ahrtal",
+            data: ergebnis.dataAhrtal,
+            backgroundColor: "#FFC000",
+            borderColor: "#FFC000",
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHitRadius: 20,
+          },
+          {
+            label: "Verfolgung der Uiguren",
+            data: ergebnis.dataUiguren,
+            backgroundColor: "#70AD47",
+            borderColor: "#70AD47",
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHitRadius: 20,
           },
         ],
       },
@@ -223,7 +262,7 @@ const dataAhrtal = getData(
   
   }
   
-function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghanistanTag, dataLibanon, libanonTag, dataCorona, coronaTag) {
+function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghanistanTag, dataLibanon, libanonTag, dataCorona, coronaTag, dataAhrtal, ahrtalTag, dataUiguren, uigurenTag) {
     var i = 0;
     for (i = 0; i < 201; i++) {
         if (dataUkraine[i] == null) {
@@ -242,383 +281,391 @@ function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghani
         } else {
             dataCorona[i].y = (dataCorona[i].y / coronaTag) * 100;
         }
+        if (dataAhrtal[i] == null) {
+        } else {
+          dataAhrtal[i].y = (dataAhrtal[i].y / ahrtalTag) * 100;
+        }
+        if (dataUiguren[i] == null) {
+        } else {
+          dataUiguren[i].y = (dataUiguren[i].y / uigurenTag) * 100;
+        }
     }
-    return {dataUkraine, dataCorona, dataAfghanistan, dataLibanon};
+    return {dataUkraine, dataCorona, dataAfghanistan, dataLibanon, dataAhrtal, dataUiguren};
 }
 
-  function erstelleStartseiteDrittesDiagramm(
-    dataUkraine,
-    dataCorona,
-    dataAfghanistan,
-    dataLibanon
-  ) {
-    if (window.chartLinks != null) {
-      window.chartLinks.destroy();
-    }
+  // function erstelleStartseiteDrittesDiagramm(
+  //   dataUkraine,
+  //   dataCorona,
+  //   dataAfghanistan,
+  //   dataLibanon
+  // ) {
+  //   if (window.chartLinks != null) {
+  //     window.chartLinks.destroy();
+  //   }
   
-    var i;
-    var ukraineTag = dataUkraine[0].y;
-    var coronaTag = dataCorona[0].y;
-    var afghanistanTag = dataAfghanistan[0].y;
-    var libanonTag = dataLibanon[0].y;
+  //   var i;
+  //   var ukraineTag = dataUkraine[0].y;
+  //   var coronaTag = dataCorona[0].y;
+  //   var afghanistanTag = dataAfghanistan[0].y;
+  //   var libanonTag = dataLibanon[0].y;
   
-    for (i = 0; i < 201; i++) {
-      if (dataUkraine[i] == null) {
-      } else {
-        dataUkraine[i].y = dataUkraine[i].y / ukraineTag;
-      }
-      if (dataAfghanistan[i] == null) {
-      } else {
-        dataAfghanistan[i].y = dataAfghanistan[i].y / afghanistanTag;
-      }
-      if (dataLibanon[i] == null) {
-      } else {
-        dataLibanon[i].y = dataLibanon[i].y / libanonTag;
-      }
-      if (dataCorona[i] == null) {
-      } else {
-        dataCorona[i].y = dataCorona[i].y / coronaTag;
-      }
-    }
+  //   for (i = 0; i < 201; i++) {
+  //     if (dataUkraine[i] == null) {
+  //     } else {
+  //       dataUkraine[i].y = dataUkraine[i].y / ukraineTag;
+  //     }
+  //     if (dataAfghanistan[i] == null) {
+  //     } else {
+  //       dataAfghanistan[i].y = dataAfghanistan[i].y / afghanistanTag;
+  //     }
+  //     if (dataLibanon[i] == null) {
+  //     } else {
+  //       dataLibanon[i].y = dataLibanon[i].y / libanonTag;
+  //     }
+  //     if (dataCorona[i] == null) {
+  //     } else {
+  //       dataCorona[i].y = dataCorona[i].y / coronaTag;
+  //     }
+  //   }
   
-    const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
-    window.chartLinks = new Chart(canvasLinks, {
-      type: "line",
-      data: {
-        datasets: [
-          {
-            label: "Ukrainekrieg",
-            data: dataUkraine,
-            borderColor: "orange",
-            backgroundColor: "orange",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-          {
-            label: "Corona-Pandemie",
-            data: dataCorona,
-            backgroundColor: "green",
-            borderColor: "green",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-          {
-            label: "Explosion im Libanon",
-            data: dataLibanon,
-            backgroundColor: "purple",
-            borderColor: "purple",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-          {
-            label: "Afghanistankrieg",
-            data: dataAfghanistan,
-            backgroundColor: "red",
-            borderColor: "red",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-        ],
-      },
-      options: {
-        layout: {
-          padding: 10,
-        },
-        maintainAspectRatio: false,
-        plugins: {
-          title: {
-            display: true,
-            text: "Aufrufe verschiedener Krisen im Vergleich zur Normalsituation",
-          },
-          legend: {
-            position: "right",
-          },
-        },
-        scales: {
-          y: {
-            title: {
-              display: true,
-              text: "Änderung der Aufrufe um Faktor",
-            },
-          },
-          x: {
-            title: {
-              display: true,
-              text: "Tage seit 60 Tage vor Hochpunkt der Aufrufzahlen",
-            },
-          },
-        },
-      },
-    });
-  }
+  //   const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
+  //   window.chartLinks = new Chart(canvasLinks, {
+  //     type: "line",
+  //     data: {
+  //       datasets: [
+  //         {
+  //           label: "Ukrainekrieg",
+  //           data: dataUkraine,
+  //           borderColor: "orange",
+  //           backgroundColor: "orange",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //         {
+  //           label: "Corona-Pandemie",
+  //           data: dataCorona,
+  //           backgroundColor: "green",
+  //           borderColor: "green",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //         {
+  //           label: "Explosion im Libanon",
+  //           data: dataLibanon,
+  //           backgroundColor: "purple",
+  //           borderColor: "purple",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //         {
+  //           label: "Afghanistankrieg",
+  //           data: dataAfghanistan,
+  //           backgroundColor: "red",
+  //           borderColor: "red",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //       ],
+  //     },
+  //     options: {
+  //       layout: {
+  //         padding: 10,
+  //       },
+  //       maintainAspectRatio: false,
+  //       plugins: {
+  //         title: {
+  //           display: true,
+  //           text: "Aufrufe verschiedener Krisen im Vergleich zur Normalsituation",
+  //         },
+  //         legend: {
+  //           position: "right",
+  //         },
+  //       },
+  //       scales: {
+  //         y: {
+  //           title: {
+  //             display: true,
+  //             text: "Änderung der Aufrufe um Faktor",
+  //           },
+  //         },
+  //         x: {
+  //           title: {
+  //             display: true,
+  //             text: "Tage seit 60 Tage vor Hochpunkt der Aufrufzahlen",
+  //           },
+  //         },
+  //       },
+  //     },
+  //   });
+  // }
   
-  function erstelleStartseiteViertesDiagramm(
-    dataUkraine,
-    dataCorona,
-    dataAfghanistan,
-    dataLibanon
-  ) {
-    if (window.chartLinks != null) {
-      window.chartLinks.destroy();
-    }
+  // function erstelleStartseiteViertesDiagramm(
+  //   dataUkraine,
+  //   dataCorona,
+  //   dataAfghanistan,
+  //   dataLibanon
+  // ) {
+  //   if (window.chartLinks != null) {
+  //     window.chartLinks.destroy();
+  //   }
   
-    var i;
-    var medianUkraineArray = [];
-    for (i = 0; i < dataUkraine.length; i++) {
-      medianUkraineArray.push(dataUkraine[i].y);
-    }
-    var medianUkraine = math.quantileSeq(medianUkraineArray, 0.5);
+  //   var i;
+  //   var medianUkraineArray = [];
+  //   for (i = 0; i < dataUkraine.length; i++) {
+  //     medianUkraineArray.push(dataUkraine[i].y);
+  //   }
+  //   var medianUkraine = math.quantileSeq(medianUkraineArray, 0.5);
   
-    var medianCoronaArray = [];
-    for (i = 0; i < dataCorona.length; i++) {
-      medianCoronaArray.push(dataCorona[i].y);
-    }
-    var medianCorona = math.quantileSeq(medianCoronaArray, 0.5);
+  //   var medianCoronaArray = [];
+  //   for (i = 0; i < dataCorona.length; i++) {
+  //     medianCoronaArray.push(dataCorona[i].y);
+  //   }
+  //   var medianCorona = math.quantileSeq(medianCoronaArray, 0.5);
   
-    var medianLibanonArray = [];
-    for (i = 0; i < dataLibanon.length; i++) {
-      medianLibanonArray.push(dataLibanon[i].y);
-    }
-    var medianLibanon = math.quantileSeq(medianLibanonArray, 0.5);
+  //   var medianLibanonArray = [];
+  //   for (i = 0; i < dataLibanon.length; i++) {
+  //     medianLibanonArray.push(dataLibanon[i].y);
+  //   }
+  //   var medianLibanon = math.quantileSeq(medianLibanonArray, 0.5);
   
-    var medianAfghanistanArray = [];
-    for (i = 0; i < dataAfghanistan.length; i++) {
-      medianAfghanistanArray.push(dataAfghanistan[i].y);
-    }
-    var medianAfghanistan = math.quantileSeq(medianAfghanistanArray, 0.5);
+  //   var medianAfghanistanArray = [];
+  //   for (i = 0; i < dataAfghanistan.length; i++) {
+  //     medianAfghanistanArray.push(dataAfghanistan[i].y);
+  //   }
+  //   var medianAfghanistan = math.quantileSeq(medianAfghanistanArray, 0.5);
   
-    for (i = 0; i < 201; i++) {
-      if (dataUkraine[i] == null) {
-      } else {
-        dataUkraine[i].y = dataUkraine[i].y / medianUkraine;
-      }
-      if (dataAfghanistan[i] == null) {
-      } else {
-        dataAfghanistan[i].y = dataAfghanistan[i].y / medianAfghanistan;
-      }
-      if (dataLibanon[i] == null) {
-      } else {
-        dataLibanon[i].y = dataLibanon[i].y / medianLibanon;
-      }
-      if (dataCorona[i] == null) {
-      } else {
-        dataCorona[i].y = dataCorona[i].y / medianCorona;
-      }
-    }
+  //   for (i = 0; i < 201; i++) {
+  //     if (dataUkraine[i] == null) {
+  //     } else {
+  //       dataUkraine[i].y = dataUkraine[i].y / medianUkraine;
+  //     }
+  //     if (dataAfghanistan[i] == null) {
+  //     } else {
+  //       dataAfghanistan[i].y = dataAfghanistan[i].y / medianAfghanistan;
+  //     }
+  //     if (dataLibanon[i] == null) {
+  //     } else {
+  //       dataLibanon[i].y = dataLibanon[i].y / medianLibanon;
+  //     }
+  //     if (dataCorona[i] == null) {
+  //     } else {
+  //       dataCorona[i].y = dataCorona[i].y / medianCorona;
+  //     }
+  //   }
   
-    const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
-    window.chartLinks = new Chart(canvasLinks, {
-      type: "line",
-      data: {
-        datasets: [
-          {
-            label: "Ukraine",
-            data: dataUkraine,
-            borderColor: "orange",
-            backgroundColor: "orange",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-          {
-            label: "Coronavirus",
-            data: dataCorona,
-            backgroundColor: "green",
-            borderColor: "green",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-          {
-            label: "Libanon",
-            data: dataLibanon,
-            backgroundColor: "purple",
-            borderColor: "purple",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-          {
-            label: "Afghanistan",
-            data: dataAfghanistan,
-            backgroundColor: "red",
-            borderColor: "red",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-        ],
-      },
-      options: {
-        layout: {
-          padding: 10,
-        },
-        maintainAspectRatio: false,
-        plugins: {
-          title: {
-            display: true,
-            text: "Aufrufe verschiedener Krisen normiert auf den Median",
-          },
-          legend: {
-            position: "right",
-          },
-        },
-        scales: {
-          y: {
-            title: {
-              display: true,
-              text: "Aufrufe/Median",
-            },
-          },
-          x: {
-            title: {
-              display: true,
-              text: "Tage seit 60 Tage vor Hochpunkt der Aufrufzahlen",
-            },
-          },
-        },
-      },
-    });
-  }
+  //   const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
+  //   window.chartLinks = new Chart(canvasLinks, {
+  //     type: "line",
+  //     data: {
+  //       datasets: [
+  //         {
+  //           label: "Ukraine",
+  //           data: dataUkraine,
+  //           borderColor: "orange",
+  //           backgroundColor: "orange",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //         {
+  //           label: "Coronavirus",
+  //           data: dataCorona,
+  //           backgroundColor: "green",
+  //           borderColor: "green",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //         {
+  //           label: "Libanon",
+  //           data: dataLibanon,
+  //           backgroundColor: "purple",
+  //           borderColor: "purple",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //         {
+  //           label: "Afghanistan",
+  //           data: dataAfghanistan,
+  //           backgroundColor: "red",
+  //           borderColor: "red",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //       ],
+  //     },
+  //     options: {
+  //       layout: {
+  //         padding: 10,
+  //       },
+  //       maintainAspectRatio: false,
+  //       plugins: {
+  //         title: {
+  //           display: true,
+  //           text: "Aufrufe verschiedener Krisen normiert auf den Median",
+  //         },
+  //         legend: {
+  //           position: "right",
+  //         },
+  //       },
+  //       scales: {
+  //         y: {
+  //           title: {
+  //             display: true,
+  //             text: "Aufrufe/Median",
+  //           },
+  //         },
+  //         x: {
+  //           title: {
+  //             display: true,
+  //             text: "Tage seit 60 Tage vor Hochpunkt der Aufrufzahlen",
+  //           },
+  //         },
+  //       },
+  //     },
+  //   });
+  // }
   
-  function erstelleStartseiteFuenftesDiagramm(
-    dataUkraine,
-    dataCorona,
-    dataAfghanistan,
-    dataLibanon
-  ) {
-    if (window.chartLinks != null) {
-      window.chartLinks.destroy();
-    }
+  // function erstelleStartseiteFuenftesDiagramm(
+  //   dataUkraine,
+  //   dataCorona,
+  //   dataAfghanistan,
+  //   dataLibanon
+  // ) {
+  //   if (window.chartLinks != null) {
+  //     window.chartLinks.destroy();
+  //   }
   
-    var i;
-    for (i = 0; i < 201; i++) {
-      if (dataUkraine[i] == null) {
-      } else {
-        dataUkraine[i].x = "" + i + "";
-      }
-      if (dataAfghanistan[i] == null) {
-      } else {
-        dataAfghanistan[i].x = "" + i + "";
-      }
-      if (dataLibanon[i] == null) {
-      } else {
-        dataLibanon[i].x = "" + i + "";
-      }
-      if (dataCorona[i] == null) {
-      } else {
-        dataCorona[i].x = "" + i + "";
-      }
-    }
+  //   var i;
+  //   for (i = 0; i < 201; i++) {
+  //     if (dataUkraine[i] == null) {
+  //     } else {
+  //       dataUkraine[i].x = "" + i + "";
+  //     }
+  //     if (dataAfghanistan[i] == null) {
+  //     } else {
+  //       dataAfghanistan[i].x = "" + i + "";
+  //     }
+  //     if (dataLibanon[i] == null) {
+  //     } else {
+  //       dataLibanon[i].x = "" + i + "";
+  //     }
+  //     if (dataCorona[i] == null) {
+  //     } else {
+  //       dataCorona[i].x = "" + i + "";
+  //     }
+  //   }
   
-    var i;
-    var medianUkraineArray = [];
-    for (i = 0; i < dataUkraine.length; i++) {
-      medianUkraineArray.push(dataUkraine[i].y);
-    }
-    var medianUkraine = math.quantileSeq(medianUkraineArray, 0.25);
+  //   var i;
+  //   var medianUkraineArray = [];
+  //   for (i = 0; i < dataUkraine.length; i++) {
+  //     medianUkraineArray.push(dataUkraine[i].y);
+  //   }
+  //   var medianUkraine = math.quantileSeq(medianUkraineArray, 0.25);
   
-    var medianCoronaArray = [];
-    for (i = 0; i < dataCorona.length; i++) {
-      medianCoronaArray.push(dataCorona[i].y);
-    }
-    var medianCorona = math.quantileSeq(medianCoronaArray, 0.25);
+  //   var medianCoronaArray = [];
+  //   for (i = 0; i < dataCorona.length; i++) {
+  //     medianCoronaArray.push(dataCorona[i].y);
+  //   }
+  //   var medianCorona = math.quantileSeq(medianCoronaArray, 0.25);
   
-    var medianLibanonArray = [];
-    for (i = 0; i < dataLibanon.length; i++) {
-      medianLibanonArray.push(dataLibanon[i].y);
-    }
-    var medianLibanon = math.quantileSeq(medianLibanonArray, 0.25);
+  //   var medianLibanonArray = [];
+  //   for (i = 0; i < dataLibanon.length; i++) {
+  //     medianLibanonArray.push(dataLibanon[i].y);
+  //   }
+  //   var medianLibanon = math.quantileSeq(medianLibanonArray, 0.25);
   
-    var medianAfghanistanArray = [];
-    for (i = 0; i < dataAfghanistan.length; i++) {
-      medianAfghanistanArray.push(dataAfghanistan[i].y);
-    }
-    var medianAfghanistan = math.quantileSeq(medianAfghanistanArray, 0.25);
+  //   var medianAfghanistanArray = [];
+  //   for (i = 0; i < dataAfghanistan.length; i++) {
+  //     medianAfghanistanArray.push(dataAfghanistan[i].y);
+  //   }
+  //   var medianAfghanistan = math.quantileSeq(medianAfghanistanArray, 0.25);
   
-    for (i = 0; i < 201; i++) {
-      if (dataUkraine[i] == null) {
-      } else {
-        dataUkraine[i].y = dataUkraine[i].y / medianUkraine;
-      }
-      if (dataAfghanistan[i] == null) {
-      } else {
-        dataAfghanistan[i].y = dataAfghanistan[i].y / medianAfghanistan;
-      }
-      if (dataLibanon[i] == null) {
-      } else {
-        dataLibanon[i].y = dataLibanon[i].y / medianLibanon;
-      }
-      if (dataCorona[i] == null) {
-      } else {
-        dataCorona[i].y = dataCorona[i].y / medianCorona;
-      }
-    }
+  //   for (i = 0; i < 201; i++) {
+  //     if (dataUkraine[i] == null) {
+  //     } else {
+  //       dataUkraine[i].y = dataUkraine[i].y / medianUkraine;
+  //     }
+  //     if (dataAfghanistan[i] == null) {
+  //     } else {
+  //       dataAfghanistan[i].y = dataAfghanistan[i].y / medianAfghanistan;
+  //     }
+  //     if (dataLibanon[i] == null) {
+  //     } else {
+  //       dataLibanon[i].y = dataLibanon[i].y / medianLibanon;
+  //     }
+  //     if (dataCorona[i] == null) {
+  //     } else {
+  //       dataCorona[i].y = dataCorona[i].y / medianCorona;
+  //     }
+  //   }
   
-    const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
-    window.chartLinks = new Chart(canvasLinks, {
-      type: "line",
-      data: {
-        datasets: [
-          {
-            label: "Ukraine",
-            data: dataUkraine,
-            borderColor: "orange",
-            backgroundColor: "orange",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-          {
-            label: "Coronavirus",
-            data: dataCorona,
-            backgroundColor: "green",
-            borderColor: "green",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-          {
-            label: "Libanon",
-            data: dataLibanon,
-            backgroundColor: "purple",
-            borderColor: "purple",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-          {
-            label: "Afghanistan",
-            data: dataAfghanistan,
-            backgroundColor: "red",
-            borderColor: "red",
-            borderWidth: 2,
-            pointRadius: 0,
-          },
-        ],
-      },
-      options: {
-        layout: {
-          padding: 10,
-        },
-        maintainAspectRatio: false,
-        plugins: {
-          title: {
-            display: true,
-            text: "Aufrufe verschiedener Krisen normiert auf das 25erQuantil",
-          },
-          legend: {
-            position: "right",
-          },
-        },
-        scales: {
-          y: {
-            title: {
-              display: true,
-              text: "Aufrufe/25erQuantil",
-            },
-          },
-          x: {
-            title: {
-              display: true,
-              text: "Tage seit 60 Tage vor Hochpunkt der Aufrufzahlen",
-            },
-          },
-        },
-      },
-    });
-  }
+  //   const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
+  //   window.chartLinks = new Chart(canvasLinks, {
+  //     type: "line",
+  //     data: {
+  //       datasets: [
+  //         {
+  //           label: "Ukraine",
+  //           data: dataUkraine,
+  //           borderColor: "orange",
+  //           backgroundColor: "orange",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //         {
+  //           label: "Coronavirus",
+  //           data: dataCorona,
+  //           backgroundColor: "green",
+  //           borderColor: "green",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //         {
+  //           label: "Libanon",
+  //           data: dataLibanon,
+  //           backgroundColor: "purple",
+  //           borderColor: "purple",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //         {
+  //           label: "Afghanistan",
+  //           data: dataAfghanistan,
+  //           backgroundColor: "red",
+  //           borderColor: "red",
+  //           borderWidth: 2,
+  //           pointRadius: 0,
+  //         },
+  //       ],
+  //     },
+  //     options: {
+  //       layout: {
+  //         padding: 10,
+  //       },
+  //       maintainAspectRatio: false,
+  //       plugins: {
+  //         title: {
+  //           display: true,
+  //           text: "Aufrufe verschiedener Krisen normiert auf das 25erQuantil",
+  //         },
+  //         legend: {
+  //           position: "right",
+  //         },
+  //       },
+  //       scales: {
+  //         y: {
+  //           title: {
+  //             display: true,
+  //             text: "Aufrufe/25erQuantil",
+  //           },
+  //         },
+  //         x: {
+  //           title: {
+  //             display: true,
+  //             text: "Tage seit 60 Tage vor Hochpunkt der Aufrufzahlen",
+  //           },
+  //         },
+  //       },
+  //     },
+  //   });
+  // }
   

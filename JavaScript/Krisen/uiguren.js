@@ -75,12 +75,12 @@ const labels = ['en.wikipedia.org','de.wikipedia.org','zh.wikipedia.org'];
     {
       label: 'LE_SSERAFIM',
       data: [0,0,22080],
-      backgroundColor:  "#70AD47",
+      backgroundColor:  "#7030A0",
     },
     {
       label: 'Our Blues',
       data: [642,0,17999],
-      backgroundColor:  "#70AD47",
+      backgroundColor:  "#FF6699",
     },
   ];
 window.chartLinks = erstelleStackedBarChart(labels, datasets);
