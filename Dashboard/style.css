@@ -56,9 +56,6 @@ canvas {
 .highlights img{
   filter: none !important;
 }
-.dunkel{
-  background: #11101D !important;
-}
 .navi img{
   filter: brightness(0) invert(1);
 }
@@ -123,7 +120,8 @@ canvas {
 }
 .dashboard{
   position: relative;
-  background: #E4E9F7;
+  /* background: #E4E9F7; */
+  background: #fff;
   min-height: 100vh;
   top: 0;
   left: 78px;
@@ -137,7 +135,7 @@ canvas {
   color: #11101d;
   font-size: 22px;
   font-weight: 500;
-  margin: 18px
+  margin: 18px;
 }
 .navi li a:active{
   background: #FFF;
@@ -146,17 +144,20 @@ canvas {
   border-radius: 5px;
   background: #FFF;
   color: #11101D;
+  margin-top: 18px;
 
   padding: 5px;
-  width: 30%;
-  margin-left: 30px;
-  margin-top: 30px;
 }
 .wrapper{
   display: flex;
   justify-content: space-between;
 }
 #wrapper{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 18px;
+}
+#wrapperNormalisierung{
   display: flex;
   justify-content: space-between;
   margin-left: 18px;

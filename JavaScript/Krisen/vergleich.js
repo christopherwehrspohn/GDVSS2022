@@ -51,7 +51,6 @@ cssEinstellungenAnpassenStartseite();
 
 
 
-  versteckeZweitesCanvas();
   erstelleStartseiteErstesDiagramm();
   erstelleStartseiteZweitesDiagramm(
     dataUkraine,

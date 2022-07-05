@@ -60,63 +60,38 @@ function erstelleUkraineDiagramme() {
     label2
   );
 
-  // // rechtes Diagramm
-  // var labelsArrayRechts = [
-  //   "Ukraine",
-  //   "2022_Russian_invasion_of_Ukraine",
-  //   "Putin",
-  //   "Selensky",
-  // ];
-
-  // var dataArrayRechts = [2373594, 2095287, 1506221, 1246332];
-
-  // window.chartRechts = erstelleKreisDiagramm(
-  //   "canvasRechts",
-  //   window.chartRechts,
-  //   dataArrayRechts,
-  //   "doughnut",
-  //   labelsArrayRechts,
-  //   "en.wikipedia.org"
-  // );
-
-  // // linkes Diagramm
-
-  // labelsArrayLinks = [
-  //   "Russischer_Überfall_auf_die_Ukraine_2022",
-  //   "Krieg_im_Donbas",
-  //   "Russisch-Ukrainischer_Krieg",
-  //   "SWIFT",
-  // ];
-
-  // dataArrayLinks = [809398, 409978, 339141, 331899];
-
-  // window.chartLinks = erstelleKreisDiagramm(
-  //   "canvasLinks",
-  //   window.chartLinks,
-  //   dataArrayLinks,
-  //   "doughnut",
-  //   labelsArrayLinks,
-  //   "ru.wikipedia.org"
-  // );
-  // // mittleres Diagramm
-
-  // labelsArrayMitte = [
-  //   "Russischer_Überfall_auf_die_Ukraine_2022",
-  //   "Krieg_im_Donbas",
-  //   "Russisch-Ukrainischer_Krieg",
-  //   "SWIFT",
-  // ];
-
-  // dataArrayMitte = [809398, 409978, 339141, 331899];
-
-  // window.chartMitte = erstelleKreisDiagramm(
-  //   "canvasMitte",
-  //   window.chartMitte,
-  //   dataArrayMitte,
-  //   "doughnut",
-  //   labelsArrayMitte,
-  //   "uk.wikipedia.org"
-  // );
-
-  window.chartLinks = erstelleStackedBarChart();
+  const labels = ['en.wikipedia.org','ru.wikipedia.org','uk.wikipedia.org'];
+    const datasets = [
+      {
+        label: 'Ukrainekrieg',
+        data: [3434668, 1558517, 62420],
+        backgroundColor: "#44546A",
+      },
+      {
+        label: 'Ukraine (Land)',
+        data: [2373594,146565,11149],
+        backgroundColor: "#4472C4",
+      },
+      {
+        label: 'Vladimir Putin',
+        data: [1506221,113525,12358],
+        backgroundColor: "#ED7D31",
+      },
+      {
+        label: 'Ballistische Rakete',
+        data: [10435,102792,75432],
+        backgroundColor:  "#A5A5A5",
+      },
+      {
+        label: 'SWIFT',
+        data: [151576,331899,42211],
+        backgroundColor:  "#FFC000",
+      },
+      {
+        label: 'Mobilmachung',
+        data: [5249,32553,39382],
+        backgroundColor:  "#70AD47",
+      },
+    ];
+  window.chartLinks = erstelleStackedBarChart(labels, datasets);
 }

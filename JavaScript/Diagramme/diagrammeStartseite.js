@@ -14,6 +14,8 @@ function cssEinstellungenAnpassenStartseite() {
     $("#wrapper").css("display", "none");
     $("canvas").css("margin-top", "5px");
     $("#auswahlNormalisierung").css("display", "block");
+    $("#wrapperNormalisierung").css("display", "block");
+
 }
 
 function erstelleStartseiteErstesDiagramm() {
@@ -26,7 +28,10 @@ const dataCorona = getData(
     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Coronavirus/daily/20150101/20220509", 200);
 const dataLibanon = getData(
     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Lebanon/daily/20150101/20220509", 200);
-
+const dataAhrtal = getData(
+      "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/de.wikipedia/all-access/all-agents/Ahrtal/daily/20150101/20220509",
+      200
+    );
 
     if (window.chartOben != null) {
       window.chartOben.destroy();
@@ -43,7 +48,7 @@ const dataLibanon = getData(
       data: {
         datasets: [
           {
-            label: "Ukraine",
+            label: "Ukrainekrieg",
             data: dataUkraine,
             borderColor: "orange",
             backgroundColor: "orange",
@@ -52,7 +57,7 @@ const dataLibanon = getData(
             pointHitRadius: 20,
           },
           {
-            label: "Coronavirus",
+            label: "Corona-Pandemie",
             data: dataCorona,
             backgroundColor: "green",
             borderColor: "green",
@@ -61,7 +66,7 @@ const dataLibanon = getData(
             pointHitRadius: 20,
           },
           {
-            label: "Libanon",
+            label: "Explosion im Libanon",
             data: dataLibanon,
             backgroundColor: "purple",
             borderColor: "purple",
@@ -70,10 +75,19 @@ const dataLibanon = getData(
             pointHitRadius: 20,
           },
           {
-            label: "Afghanistan",
+            label: "Afghanistankrieg",
             data: dataAfghanistan,
             backgroundColor: "red",
             borderColor: "red",
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHitRadius: 20,
+          },
+          {
+            label: "Überschwemmung im Ahrtal",
+            data: dataAhrtal,
+            backgroundColor: "blue",
+            borderColor: "blue",
             borderWidth: 2,
             pointRadius: 0,
             pointHitRadius: 20,
@@ -133,7 +147,6 @@ const dataLibanon = getData(
   
       var ergebnis = getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghanistanTag, dataLibanon, libanonTag, dataCorona, coronaTag);
         console.log(ergebnis.dataAfghanistan);
-    $(".col-4").addClass("col-12");
    
     const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
     window.chartLinks = new Chart(canvasLinks, {
@@ -141,7 +154,7 @@ const dataLibanon = getData(
       data: {
         datasets: [
           {
-            label: "Ukraine",
+            label: "Ukrainekrieg",
             data: ergebnis.dataUkraine,
             borderColor: "orange",
             backgroundColor: "orange",
@@ -149,7 +162,7 @@ const dataLibanon = getData(
             pointRadius: 0,
           },
           {
-            label: "Coronavirus",
+            label: "Corona-Pandemie",
             data: ergebnis.dataCorona,
             backgroundColor: "green",
             borderColor: "green",
@@ -157,7 +170,7 @@ const dataLibanon = getData(
             pointRadius: 0,
           },
           {
-            label: "Libanon",
+            label: "Explosion im Libanon",
             data: ergebnis.dataLibanon,
             backgroundColor: "purple",
             borderColor: "purple",
@@ -165,7 +178,7 @@ const dataLibanon = getData(
             pointRadius: 0,
           },
           {
-            label: "Afghanistan",
+            label: "Afghanistankrieg",
             data: ergebnis.dataAfghanistan,
             backgroundColor: "red",
             borderColor: "red",
@@ -182,7 +195,7 @@ const dataLibanon = getData(
         plugins: {
           title: {
             display: true,
-            text: "Aufrufe verschiedener Krisen normiert auf den hoechsten Punkt",
+            text: "Aufrufe verschiedener Wikipedia-Artikel zu Krisen normiert auf den hoechsten Punkt",
           },
           legend: {
             position: "right",
@@ -215,19 +228,19 @@ function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghani
     for (i = 0; i < 201; i++) {
         if (dataUkraine[i] == null) {
         } else {
-            dataUkraine[i].y = dataUkraine[i].y / ukraineTag;
+            dataUkraine[i].y = (dataUkraine[i].y / ukraineTag) * 100;
         }
         if (dataAfghanistan[i] == null) {
         } else {
-            dataAfghanistan[i].y = dataAfghanistan[i].y / afghanistanTag;
+            dataAfghanistan[i].y = (dataAfghanistan[i].y / afghanistanTag) * 100;
         }
         if (dataLibanon[i] == null) {
         } else {
-            dataLibanon[i].y = dataLibanon[i].y / libanonTag;
+            dataLibanon[i].y = (dataLibanon[i].y / libanonTag) * 100;
         }
         if (dataCorona[i] == null) {
         } else {
-            dataCorona[i].y = dataCorona[i].y / coronaTag;
+            dataCorona[i].y = (dataCorona[i].y / coronaTag) * 100;
         }
     }
     return {dataUkraine, dataCorona, dataAfghanistan, dataLibanon};
@@ -267,7 +280,6 @@ function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghani
         dataCorona[i].y = dataCorona[i].y / coronaTag;
       }
     }
-    $(".col-6").addClass("col-12");
   
     const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
     window.chartLinks = new Chart(canvasLinks, {
@@ -275,7 +287,7 @@ function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghani
       data: {
         datasets: [
           {
-            label: "Ukraine",
+            label: "Ukrainekrieg",
             data: dataUkraine,
             borderColor: "orange",
             backgroundColor: "orange",
@@ -283,7 +295,7 @@ function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghani
             pointRadius: 0,
           },
           {
-            label: "Coronavirus",
+            label: "Corona-Pandemie",
             data: dataCorona,
             backgroundColor: "green",
             borderColor: "green",
@@ -291,7 +303,7 @@ function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghani
             pointRadius: 0,
           },
           {
-            label: "Libanon",
+            label: "Explosion im Libanon",
             data: dataLibanon,
             backgroundColor: "purple",
             borderColor: "purple",
@@ -299,7 +311,7 @@ function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghani
             pointRadius: 0,
           },
           {
-            label: "Afghanistan",
+            label: "Afghanistankrieg",
             data: dataAfghanistan,
             backgroundColor: "red",
             borderColor: "red",
@@ -393,7 +405,6 @@ function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghani
         dataCorona[i].y = dataCorona[i].y / medianCorona;
       }
     }
-    $(".col-6").addClass("col-12");
   
     const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
     window.chartLinks = new Chart(canvasLinks, {
@@ -539,7 +550,6 @@ function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghani
         dataCorona[i].y = dataCorona[i].y / medianCorona;
       }
     }
-    $(".col-6").addClass("col-12");
   
     const canvasLinks = document.getElementById("canvasLinks").getContext("2d");
     window.chartLinks = new Chart(canvasLinks, {
@@ -610,12 +620,5 @@ function getWertDurchHochpunkt(dataUkraine, ukraineTag, dataAfghanistan, afghani
         },
       },
     });
-  }
-  
-  function versteckeZweitesCanvas() {
-    const drittesCanvas = document.getElementById("canvasRechts");
-    drittesCanvas.style.display = "none";
-    const viertesCanvas = document.getElementById("canvasMitte");
-    viertesCanvas.style.display = "none";
   }
   

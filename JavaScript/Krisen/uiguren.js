@@ -39,51 +39,40 @@ window.addEventListener("DOMContentLoaded", function () {
       label1,
       null
     );
-  
-    // rechtes Diagramm
-    var labelsArrayRechts = [
-    ];
-  
-    var dataArrayRechts = [];
-  
-    window.chartRechts = erstelleKreisDiagramm(
-      "canvasRechts",
-      window.chartRechts,
-      dataArrayRechts,
-      "doughnut",
-      labelsArrayRechts,
-      "en.wikipedia.org"
-    );
-  
-    // linkes Diagramm
-  
-    labelsArrayLinks = [
-    ];
-  
-    dataArrayLinks = [];
-  
-    window.chartLinks = erstelleKreisDiagramm(
-      "canvasLinks",
-      window.chartLinks,
-      dataArrayLinks,
-      "doughnut",
-      labelsArrayLinks,
-      "ru.wikipedia.org"
-    );
-    // mittleres Diagramm
-  
-    labelsArrayMitte = [
-    ];
-  
-    dataArrayMitte = [];
-  
-    window.chartMitte = erstelleKreisDiagramm(
-      "canvasMitte",
-      window.chartMitte,
-      dataArrayMitte,
-      "doughnut",
-      labelsArrayMitte,
-      "uk.wikipedia.org"
-    );
+
+const labels = ['en.wikipedia.org','de.wikipedia.org','es.wikipedia.org'];
+  const datasets = [
+    {
+      label: '',
+      data: [0, 0, 0],
+      backgroundColor: "#44546A",
+    },
+    {
+      label: ' ',
+      data: [0,0,0],
+      backgroundColor: "#4472C4",
+    },
+    {
+      label: ' ',
+      data: [0,0,0],
+      backgroundColor: "#ED7D31",
+    },
+    {
+      label: ' ',
+      data: [0,0,0],
+      backgroundColor:  "#A5A5A5",
+    },
+    {
+      label: ' ',
+      data: [0,0,0],
+      backgroundColor:  "#FFC000",
+    },
+    {
+      label: ' ',
+      data: [0,0,0],
+      backgroundColor:  "#70AD47",
+    },
+  ];
+window.chartLinks = erstelleStackedBarChart(labels, datasets);
   }
   
