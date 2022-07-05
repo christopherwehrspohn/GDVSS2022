@@ -43,34 +43,29 @@ function erstelleCoronaDiagramme() {
   const labels = ['en.wikipedia.org','de.wikipedia.org','es.wikipedia.org'];
   const datasets = [
     {
-      label: '',
-      data: [0, 0, 0],
+      label: 'Tod von Kobe Bryant',
+      data: [9701850, 484637, 936419],
       backgroundColor: "#44546A",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Coronavirus',
+      data: [982596,115875,232649],
       backgroundColor: "#4472C4",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'KZ Auschwitz',
+      data: [154385,87414,32018],
       backgroundColor: "#ED7D31",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Billie Eilish',
+      data: [1051200,83206,73197],
       backgroundColor:  "#A5A5A5",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Royal Rumble (2020)',
+      data: [1419023,0,85222],
       backgroundColor:  "#FFC000",
-    },
-    {
-      label: ' ',
-      data: [0,0,0],
-      backgroundColor:  "#70AD47",
     },
   ];
 window.chartLinks = erstelleStackedBarChart(labels, datasets);

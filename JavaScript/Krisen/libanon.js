@@ -8,12 +8,12 @@ window.addEventListener("DOMContentLoaded", function () {
 function erstelleLibanonDiagramme() {
   var label1 = {
     type: "label",
-    xValue: 60,
+    xValue: 0,
     yValue: 0,
     xAdjust: 290,
     yAdjust: -100,
     backgroundColor: "rgba(245,245,245)",
-    content: ["Start der Invasion"],
+    content: ["Explosion im Hafen von Beirut | 04.08.2020"],
     textAlign: "start",
     font: {
       size: 15,
@@ -25,7 +25,7 @@ function erstelleLibanonDiagramme() {
   };
   var label2 = {
     type: "label",
-    xValue: 58,
+    xValue: 0,
     yValue: 0,
     xAdjust: -230,
     yAdjust: -100,
@@ -46,8 +46,8 @@ function erstelleLibanonDiagramme() {
   };
   // Daten aus API laden
   var data2020_Beirut_explosion = getData(
-    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/2020_Beirut_explosion/daily/20150101/20220509",
-    200
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/2020_Beirut_explosions/daily/20150101/20220509",
+    140
   );
 
   window.chartOben = erstelleLinienDiagramm(
@@ -57,39 +57,39 @@ function erstelleLibanonDiagramme() {
     data2020_Beirut_explosion,
     "2020_Beirut_explosion",
     "Artikel zur Explosionskatastrophe im Libanon",
-    null,
+    label1,
     null
   );
-  const labels = ['en.wikipedia.org','de.wikipedia.org','es.wikipedia.org'];
+  const labels = ['en.wikipedia.org','de.wikipedia.org','ar.wikipedia.org'];
   const datasets = [
     {
-      label: '',
-      data: [0, 0, 0],
+      label: 'Ammoniumnitrat',
+      data: [586565, 273989, 66896],
       backgroundColor: "#44546A",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Libanon',
+      data: [685244,114565,30468],
       backgroundColor: "#4472C4",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Explosionskatastrophe im Hafen von Beirut 2020',
+      data: [484606,97659,22288],
       backgroundColor: "#ED7D31",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Explosion des Oppauer Stickstoffwerkes',
+      data: [90915,95824,0],
       backgroundColor:  "#A5A5A5",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Beirut',
+      data: [431572,81031,14243],
       backgroundColor:  "#FFC000",
     },
     {
-      label: ' ',
-      data: [0,0,0],
+      label: 'Atombombenabwürfe auf Hiroshima und Nagasaki',
+      data: [137667,15281,35270],
       backgroundColor:  "#70AD47",
     },
   ];
